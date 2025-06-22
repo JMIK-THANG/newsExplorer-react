@@ -20,6 +20,8 @@
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
+  margin: 0;
+  margin-bottom: 24px;
 }
 .about__description {
   max-width: 600px;
@@ -28,5 +30,8 @@
   line-height: 18px;
   color: #1a1b22;
   padding-right: 216px;
-  letter-spacing: 0px;
+  margin: 0;
+}
+.about__app {
+  margin: 0;
 }

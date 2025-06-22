@@ -9,14 +9,17 @@
   gap: 40px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  margin:0; 
 }
 .footer__copyright {
   color: #b6bcbf;
   font-size: 16px;
   line-height: 22px;
+  margin:0; 
 }
 .footer__social-item {
   list-style: none;
+
 }
 .footer__link {
   text-decoration: none;

@@ -13,7 +13,7 @@
   font-weight: 700;
   line-height: 24px;
   vertical-align: middle;
-  letter-spacing: 0;
+  margin:0; 
 }
 .navigation__menu {
   display: flex;
@@ -37,6 +37,7 @@
   height: 2px;
   width: 120%;
   background-color: #fff;
+  margin:0; 
 }
 .navigation__signin {
   width: 176px;

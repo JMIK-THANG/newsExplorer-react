@@ -17,7 +17,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-  padding-bottom: 88px;
+  margin-bottom: 88px;
+  margin:0 0 88px 0; 
 }
 .searchForm__container {
   position: relative;
