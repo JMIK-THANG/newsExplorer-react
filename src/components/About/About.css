@@ -1,0 +1,32 @@
+.about__content {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 104px 0;
+  gap: 56px;
+}
+.about__image {
+  width: 464px;
+  height: 464px;
+  border-radius: 50%;
+}
+.about__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Roboto", sans-serif;
+}
+.about__author {
+  max-width: 600px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+}
+.about__description {
+  max-width: 600px;
+  height: 120px;
+  font-size: 18px;
+  line-height: 18px;
+  color: #1a1b22;
+  padding-right: 216px;
+  letter-spacing: 0px;
+}

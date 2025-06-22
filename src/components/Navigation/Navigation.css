@@ -5,6 +5,7 @@
   height: 80px;
   color: white;
   border-bottom: 1px solid #ffffff33;
+  padding: 0 104px 0;
 }
 .navigation__logo {
   font-family: "Roboto Slab", sans-serif;
@@ -13,18 +14,16 @@
   line-height: 24px;
   vertical-align: middle;
   letter-spacing: 0;
-  padding-left: 104px;
 }
 .navigation__menu {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   font-family: "roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
   vertical-align: center;
   line-height: 24px;
-  padding-right: 104px;
 }
 
 .navigation__home {
