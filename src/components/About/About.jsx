@@ -18,7 +18,7 @@ const About = () => {
   <span className="about__tech">Express</span>, and 
   <span className="about__tech">MongoDB</span>. I’ve built end-to-end applications, learned how to work with APIs, manage front-end and back-end integration, and write clean, maintainable code.
   <br /><br />
-  <p className="about__app">Welcome to my newsExplorer app</p>
+  <span className="about__app">Welcome to my newsExplorer app</span>
 </p>
         </div>
       </div>

@@ -18,7 +18,7 @@
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 88px;
-  margin:0 0 88px 0; 
+  margin: 0 0 88px 0;
 }
 .searchForm__container {
   position: relative;
@@ -49,9 +49,8 @@
   right: 0px;
   border: none;
   background: #2f71e5;
-
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 .searchForm__button:hover {
-  background: #925ff0;
+  background: #347eff;
 }
