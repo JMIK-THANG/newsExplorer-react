@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
+const RegisterModal = ({
+  isOpen,
+  handleCloseClick,
+  handleSigninClick,
+  handleSuccessRegistration,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
+    username: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -17,12 +22,12 @@ const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    //     handleLogin(data)
+    handleSuccessRegistration();
   };
   return (
     <ModalWithForm
+      title="Sign Up"
       onSubmit={handleSubmit}
-      title="Sign in"
       isOpen={isOpen}
       handleCloseClick={handleCloseClick}
     >
@@ -31,7 +36,7 @@ const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
         <input
           type="email"
           name="email"
-          id="login-modal-email"
+          id="register-modal-email"
           className="modal__input"
           placeholder="Email"
           value={data.email}
@@ -43,27 +48,41 @@ const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
         <input
           type="password"
           name="password"
-          id="login-modal-password"
+          id="register-modal-password"
           className="modal__input"
-          placeholder="Email"
+          placeholder="Enter password"
           value={data.password}
           onChange={handleChange}
         />
       </label>
+      <label className="modal__label">
+        Enter your username
+        <input
+          type="text"
+          name="username"
+          className="modal__input"
+          id="register-modal-username"
+          placeholder="Enter your username"
+          value={data.username}
+          onChange={handleChange}
+        />
+      </label>
       <div className="modal__button-container">
-        <button className="modal__button modal__button_type_primary">
-          Sign in
+        <button
+          type="submit"
+          className="modal__button modal__button_type_primary"
+        >
+          Sign Up
         </button>
         <button
-          
-          onClick={handleSignupClick}
+          onClick={handleSigninClick}
           className="modal__button modal__button_type_secondary"
         >
-          or <span>Sign Up</span>
+          or <span>Sign in</span>
         </button>
       </div>
     </ModalWithForm>
   );
 };
 
-export default LoginModal;
+export default RegisterModal;
