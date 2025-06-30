@@ -1,29 +1,28 @@
 .searchForm {
+  font-family: "Roboto Slab", sans-serif;
   color: #fff;
   margin: 0 auto;
   max-width: 608px;
+  width: 100%;
 }
 .searchForm__heading {
-  font-family: "Roboto Slab", sans-serif;
   font-weight: 400;
   font-size: 60px;
   line-height: 64px;
-  margin: 0 auto;
+  margin: 0;
   padding-top: 80px;
   margin-bottom: 32px;
 }
 .searchForm__description {
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 88px;
-  margin: 0 0 88px 0;
+  margin: 0 auto 88px;
 }
 .searchForm__container {
   position: relative;
   display: flex;
-  font-family: "Roboto", sans-serif;
 }
 .searchForm__input {
   flex: 1;
@@ -53,4 +52,29 @@
 }
 .searchForm__button:hover {
   background: #347eff;
+}
+
+@media screen and (max-width: 992px) {
+  .searchForm {
+    width: 452px;
+    height: 56px;
+  }
+  .searchForm__heading {
+    max-width: 385px;
+    width: 100%;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 36px;
+    line-height: 40px;
+    padding-top: 38px;
+    margin: 0 0 16px 0;
+  }
+  .searchForm__description {
+    margin-bottom: 48px;
+  }
+  .searchForm__input {
+    height: 56px;
+  }
+  .searchForm__button {
+    height: 56px;
+  }
 }

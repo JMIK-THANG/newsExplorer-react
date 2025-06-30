@@ -8,9 +8,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility:hidden; 
+  visibility: hidden;
   transition: visibility 0.5s, opacity 0.5s ease-in-out;
-  opacity:0; 
+  opacity: 0;
   z-index: 999;
 }
 .modal_opened {
@@ -102,7 +102,10 @@
 .modal__button_type_secondary {
   border: none;
   background: transparent;
-  font-size: 14px;
+  font-size:14px; 
+  font-family: "Inter", sans-serif;
+  line-height: 100%;
+  font-weight: 400;
 }
 .modal__button_type_secondary span {
   color: #2f71e5;

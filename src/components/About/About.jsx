@@ -11,13 +11,7 @@ const About = () => {
           <p className="about__description">
   Hello! My name is Jmik Thang. I'm a Software Engineering student at 
   <span className="about__program">TripleTen</span>, and a sushi chef by profession. I bring the same precision, patience, and creativity from the kitchen into the world of full-stack web development.
-  <br /><br />
-  Through TripleTen's intensive curriculum, I've gained hands-on experience with modern technologies like 
-  <span className="about__tech">React</span>, 
-  <span className="about__tech">Node.js</span>, 
-  <span className="about__tech">Express</span>, and 
-  <span className="about__tech">MongoDB</span>. I’ve built end-to-end applications, learned how to work with APIs, manage front-end and back-end integration, and write clean, maintainable code.
-  <br /><br />
+<br />
   <span className="about__app">Welcome to my newsExplorer app</span>
 </p>
         </div>

@@ -19,7 +19,7 @@ const App = () => {
     setActiveModal("signin");
   };
   const handleSignupClick = () => {
-    setActiveModal("register");
+    setActiveModal("signup");
   };
   const handleSuccessRegistration = () => {
     setActiveModal("success");
@@ -36,7 +36,7 @@ const App = () => {
           <About />
           <Footer />
           <RegisterModal
-            isOpen={activeModal === "register"}
+            isOpen={activeModal === "signup"}
             handleCloseClick={handleCloseClick}
             handleSigninClick={handleSigninClick}
             handleSuccessRegistration={handleSuccessRegistration}
