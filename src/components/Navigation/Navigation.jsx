@@ -1,15 +1,16 @@
 import React from "react";
 import "./Navigation.css";
+
 const Navigation = ({ handleLoginClick }) => {
   return (
-    <div className="navigation container">
+    <div className="navigation">
       <h1 className="navigation__logo">NewsExplorer</h1>
       <div className="navigation__menu">
-        <p className="navigation__home">Home</p>
+        <p className="navigation__link navigation__Link-home">Home</p>
         <button
           onClick={handleLoginClick}
           type="button"
-          className="navigation__signin"
+          className="navigation__link navigation__link-signin"
         >
           Sign in
         </button>

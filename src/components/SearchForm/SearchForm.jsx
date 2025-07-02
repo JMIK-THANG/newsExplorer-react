@@ -6,20 +6,22 @@ const SearchForm = () => {
 
   function newsTopic(e) {}
   return (
-    <div className="searchForm">
-      <h1 className="searchForm__heading">What's going on in the world?</h1>
-      <p className="searchForm__description">
+    <div className="search-form">
+      <h1 className="search-form__heading">What's going on in <br />the world?</h1>
+      <p className="search-form__description">
         Find the latest news on any topic and save them in your personal
         account.
       </p>
-      <div className="searchForm__container">
+      <form className="search-form__form">
         <input
           type="text"
-          className="searchForm__input"
+          className="search-form__input"
           placeholder="Enter topic"
         />
-        <button className="searchForm__button">Search</button>
-      </div>
+        <button type="submit" className="search-form__button">
+          Search
+        </button>
+      </form>
     </div>
   );
 };

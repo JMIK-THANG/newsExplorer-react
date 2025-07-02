@@ -1,30 +1,30 @@
-.searchForm {
+.search-form {
   font-family: "Roboto Slab", sans-serif;
   color: #fff;
   margin: 0 auto;
   max-width: 608px;
   width: 100%;
 }
-.searchForm__heading {
+.search-form__heading {
+  /* max-width: 600px; */
   font-weight: 400;
   font-size: 60px;
   line-height: 64px;
-  margin: 0;
   padding-top: 80px;
-  margin-bottom: 32px;
+  margin: 0 auto 32px;
+  /* margin:0;  */
 }
-.searchForm__description {
+.search-form__description {
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-  margin-bottom: 88px;
   margin: 0 auto 88px;
 }
-.searchForm__container {
+.search-form__form {
   position: relative;
   display: flex;
 }
-.searchForm__input {
+.search-form__input {
   flex: 1;
   height: 64px;
   border: none;
@@ -35,13 +35,16 @@
   border-radius: 100px;
   padding: 0 0 0 24px;
 }
-.searchForm__button {
+.search-form__input::placeholder {
+  opacity: 20%;
+}
+.search-form__button {
   position: absolute;
   width: 168px;
   height: 64px;
   font-size: 18px;
   line-height: 24px;
-  vertical-align: center;
+  color: #fff;
   font-weight: 500;
   border-radius: 100px;
   top: 0;
@@ -50,31 +53,31 @@
   background: #2f71e5;
   transition: all 0.3s ease-in-out;
 }
-.searchForm__button:hover {
+.search-form__button:hover {
   background: #347eff;
 }
 
-@media screen and (max-width: 992px) {
-  .searchForm {
-    width: 452px;
-    height: 56px;
-  }
-  .searchForm__heading {
-    max-width: 385px;
-    width: 100%;
-    font-family: "Roboto Slab", sans-serif;
+@media screen and (max-width: 768px) {
+  .search-form__heading {
+    max-width: 450px;
     font-size: 36px;
     line-height: 40px;
     padding-top: 38px;
-    margin: 0 0 16px 0;
+    margin-bottom: 16px;
   }
-  .searchForm__description {
+  .search-form__description {
+    max-width: 452px;
     margin-bottom: 48px;
   }
-  .searchForm__input {
+  .search-form__form {
+    max-width: 448px;
+    margin: 0 auto;
+  }
+  .search-form__input {
     height: 56px;
   }
-  .searchForm__button {
+  .search-form__button {
+    width: 160px;
     height: 56px;
   }
 }

@@ -8,8 +8,8 @@
   padding: 0 104px 0;
 }
 .navigation__logo {
-  width:200px; 
-  height:24px; 
+  width: 200px;
+  height: 24px;
   font-family: "Roboto Slab", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -21,17 +21,20 @@
   display: flex;
   align-items: center;
   gap: 40px;
+}
+.navigation__link {
   font-family: "roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
-  vertical-align: center;
   line-height: 24px;
+  margin:0; 
 }
 
-.navigation__home {
+.navigation__link-home {
   position: relative;
+  margin: 0;
 }
-.navigation__home::after {
+.navigation__link-home::after {
   position: absolute;
   content: "";
   top: 50px;
@@ -41,7 +44,7 @@
   background-color: #fff;
   margin: 0;
 }
-.navigation__signin {
+.navigation__link-signin {
   width: 176px;
   height: 48px;
   border: 1px solid white;
@@ -50,32 +53,19 @@
   background: transparent;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
   .navigation {
     height: 66px;
-    padding: 0 40px 0;
+    padding:0 40px; 
   }
   .navigation__menu {
-    font-size: 16px;
-    gap: 16px;
+    gap: 18px;
   }
-  .navigation__home {
-    width: 64px;
-    height: 24px;
+  .navigation__link { 
+    font-size:16px; 
   }
-  .navigation__home::after {
-    top: 43px;
-    left: 0;
-    height: 2px;
-    width: 70%;
-  }
-  .navigation__signin {
+  .navigation__link-signin {
     width: 152px;
     height: 40px;
-    border: 1px solid #fff;
-  }
-  .navigation__logo{ 
-    width:200px; 
-    height:24.8px; 
   }
 }

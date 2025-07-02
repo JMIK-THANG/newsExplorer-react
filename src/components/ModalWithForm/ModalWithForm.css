@@ -71,6 +71,9 @@
 .modal__input:last-child {
   margin-bottom: 39px;
 }
+.modal__input::placeholder{ 
+  opacity:20%; 
+}
 
 .modal__button-container {
   display: flex;
