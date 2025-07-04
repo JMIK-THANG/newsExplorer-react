@@ -101,16 +101,17 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    box-sizing: border-box;
   }
   .search-form__input {
     flex: none;
-    width: 288px;
+    width: 264px;
     height: 56px;
     padding: 0 0 0 24px;
   }
   .search-form__button {
     position: static;
     height: 56px;
-    width: 312px;
+    width: 288px;
   }
 }

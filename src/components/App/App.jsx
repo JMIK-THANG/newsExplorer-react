@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import backgroundImg from "../../assets/background.svg";
 import Header from "../../components/Header/Header";
@@ -8,9 +8,14 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessRegisterModal from "../SucessRegisterModal/SuccessRegisterModal";
+import { getToken, setToken, removeToken } from "../../utils/token";
+import { singin, signup, checkToken } from "../../utils/api";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -37,13 +42,13 @@ const App = () => {
           <Footer />
           <RegisterModal
             isOpen={activeModal === "signup"}
-            handleCloseClick={handleCloseClick}
+            // handleCloseClick={handleCloseClick}
             handleSigninClick={handleSigninClick}
             handleSuccessRegistration={handleSuccessRegistration}
           />
           <LoginModal
             isOpen={activeModal === "signin"}
-            handleCloseClick={closeActiveModal}
+            // handleCloseClick={closeActiveModal}
             handleSignupClick={handleSignupClick}
           />
           <SuccessRegisterModal
