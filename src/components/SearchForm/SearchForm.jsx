@@ -7,7 +7,10 @@ const SearchForm = () => {
   function newsTopic(e) {}
   return (
     <div className="search-form">
-      <h1 className="search-form__heading">What's going on in <br />the world?</h1>
+      <h1 className="search-form__heading">
+        What's going on in 
+        the world?
+      </h1>
       <p className="search-form__description">
         Find the latest news on any topic and save them in your personal
         account.

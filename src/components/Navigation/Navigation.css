@@ -7,6 +7,9 @@
   border-bottom: 1px solid #ffffff33;
   padding: 0 104px 0;
 }
+.navigation__mobile {
+  display: none;
+}
 .navigation__logo {
   width: 200px;
   height: 24px;
@@ -27,7 +30,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  margin:0; 
+  margin: 0;
 }
 
 .navigation__link-home {
@@ -56,16 +59,34 @@
 @media screen and (max-width: 768px) {
   .navigation {
     height: 66px;
-    padding:0 40px; 
+    padding: 0 40px;
   }
   .navigation__menu {
     gap: 18px;
   }
-  .navigation__link { 
-    font-size:16px; 
+  .navigation__link {
+    font-size: 16px;
   }
   .navigation__link-signin {
     width: 152px;
     height: 40px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .navigation {
+    padding: 16px;
+    height: 56px;
+    box-sizing: border-box;
+  }
+  .navigation__menu {
+    display: none;
+    align-items: baseline;
+    height: 24px;
+  }
+  .navigation__mobile {
+    display: block;
+    background: transparent;
+    border: none;
+    
   }
 }

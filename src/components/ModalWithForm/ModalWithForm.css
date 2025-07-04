@@ -71,8 +71,8 @@
 .modal__input:last-child {
   margin-bottom: 39px;
 }
-.modal__input::placeholder{ 
-  opacity:20%; 
+.modal__input::placeholder {
+  opacity: 20%;
 }
 
 .modal__button-container {
@@ -105,8 +105,8 @@
 .modal__button_type_secondary {
   border: none;
   background: transparent;
-  font-size:14px; 
-  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 100%;
   font-weight: 400;
 }
