@@ -13,7 +13,7 @@ import { singin, signup, checkToken } from "../../utils/api";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
@@ -37,7 +37,7 @@ const App = () => {
     <div className="page">
       <div className="page__section">
         <div className="page__content">
-          <Header handleLoginClick={handleSigninClick} />
+          <Header handleLoginClick={handleSigninClick}  isLoggedIn={isLoggedIn}/>
           <About />
           <Footer />
           <RegisterModal

@@ -6,12 +6,13 @@
   width: 100%;
 }
 .search-form__heading {
-  max-width: 550px;
+  max-width: 600px;
   font-weight: 400;
   font-size: 60px;
   line-height: 64px;
   padding-top: 80px;
   margin: 0 auto 32px;
+  margin-right:10px; 
 }
 .search-form__description {
   font-weight: 400;

@@ -1,0 +1,28 @@
+.navigation-logged__menu {
+  display: flex;
+  align-items: center;
+  gap: 76px;
+}
+.navigation-logged__menu p {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.navigation-logged__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  background: transparent;
+  border: 1px solid #d1d2d6;
+  padding: 8px 8px 8px 15px;
+  border-radius: 1000px;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+}
+.navigation-logged__color {
+  color: #1a1b22;
+}
