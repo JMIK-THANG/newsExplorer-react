@@ -1,6 +1,7 @@
 import "./NewsCard.css";
 
 const NewsCard = ({ article }) => {
+  console.log(article);
   return (
     <div className="news-card">
       <img
