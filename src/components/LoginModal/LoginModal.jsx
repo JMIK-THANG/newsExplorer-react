@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
+const LoginModal = ({
+  isOpen,
+  handleCloseClick,
+  handleLogin,
+  handleSignupClick,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -17,7 +22,7 @@ const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    //     handleLogin(data)
+    handleLogin(data);
   };
   return (
     <ModalWithForm
@@ -55,7 +60,6 @@ const LoginModal = ({ isOpen, handleCloseClick, handleSignupClick }) => {
           Sign in
         </button>
         <button
-          
           onClick={handleSignupClick}
           className="modal__button modal__button_type_secondary"
         >

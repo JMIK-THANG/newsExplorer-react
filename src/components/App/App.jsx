@@ -4,18 +4,60 @@ import backgroundImg from "../../assets/background.svg";
 import Header from "../../components/Header/Header";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
-import Footer from "../Footer/Footer";
+import NewsGrid from "../NewsGrid/NewsGrid";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessRegisterModal from "../SucessRegisterModal/SuccessRegisterModal";
-import { getToken, setToken, removeToken } from "../../utils/token";
-import { singin, signup, checkToken } from "../../utils/api";
+import { fetchNews } from "../../utils/api";
+import Footer from "../Footer/Footer";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
+  const [error, setError] = useState(null);
+
+  const handleSearch = async (query) => {
+    if (!query.trim()) return;
+
+    setSearchQuery(query);
+    setIsLoading(true);
+    setCurrentPage(1);
+    try {
+      const { articles, totalResults } = await fetchNews(query, 3, 1);
+      setSearchResults(articles);
+      console.log(articles);
+      setTotalResults(totalResults);
+      console.log(totalResults);
+      setError(null);
+    } catch (err) {
+      setError("Error fetching news. Please try again.");
+      setSearchResults([]);
+      setTotalResults(0);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleShowMore = async () => {
+    setIsLoading(true);
+    try {
+      const nextPage = currentPage + 1;
+      const { articles } = await fetchNews(searchQuery, 3, nextPage);
+      setSearchResults((prev) => [...prev, ...articles]);
+      setCurrentPage(nextPage);
+      setError(null);
+    } catch (err) {
+      setError("Error loading more articles. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const moreArticles = searchResults.length < totalResults;
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -37,18 +79,35 @@ const App = () => {
     <div className="page">
       <div className="page__section">
         <div className="page__content">
-          <Header handleLoginClick={handleSigninClick}  isLoggedIn={isLoggedIn}/>
+          <Header
+            handleLoginClick={handleSigninClick}
+            isLoggedIn={isLoggedIn}
+            onSearch={handleSearch}
+          />
+          {isLoading && <Preloader />}
+          {!isLoading && error && <div>{error}</div>}
+          {!isLoading && searchResults.length > 0 && (
+            <NewsGrid
+              searchResults={searchResults}
+              onShowMore={handleShowMore}
+              moreArticles={moreArticles}
+            />
+          )}
+          {!isLoading && searchResults.length === 0 && searchQuery && (
+            <div className="no-results">
+              No Articles found for "{searchQuery}"
+            </div>
+          )}
           <About />
-          <Footer />
           <RegisterModal
             isOpen={activeModal === "signup"}
-            // handleCloseClick={handleCloseClick}
+            handleCloseClick={handleCloseClick}
             handleSigninClick={handleSigninClick}
             handleSuccessRegistration={handleSuccessRegistration}
           />
           <LoginModal
             isOpen={activeModal === "signin"}
-            // handleCloseClick={closeActiveModal}
+            handleCloseClick={closeActiveModal}
             handleSignupClick={handleSignupClick}
           />
           <SuccessRegisterModal
@@ -56,6 +115,7 @@ const App = () => {
             handleSigninclick={handleSigninClick}
             handleCloseClick={handleCloseClick}
           />
+          <Footer />
         </div>
       </div>
     </div>

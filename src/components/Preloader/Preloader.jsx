@@ -1,10 +1,12 @@
-import "./Preloader.css"; 
-import React from 'react'
+import "./Preloader.css";
 
 const Preloader = () => {
   return (
-    <div className="circle-preloader"> Searching for news...</div>
-  )
-}
+    <div className="news-preloader">
+      <div className="news-preloader__spinner"></div>
+      <p className="news-preloader__text">Loading news...</p>
+    </div>
+  );
+};
 
-export default Preloader
+export default Preloader;

@@ -5,6 +5,7 @@ const RegisterModal = ({
   isOpen,
   handleCloseClick,
   handleSigninClick,
+  handleRegistration,
   handleSuccessRegistration,
 }) => {
   const [data, setData] = useState({
@@ -22,7 +23,8 @@ const RegisterModal = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSuccessRegistration();
+    handleRegistration(data)
+    // handleSuccessRegistration();
   };
   return (
     <ModalWithForm
