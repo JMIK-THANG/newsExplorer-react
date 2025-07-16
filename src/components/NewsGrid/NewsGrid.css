@@ -1,5 +1,5 @@
 .news-grid {
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
   padding: 80px 104px;
   background: #f5f6f7;
@@ -33,4 +33,5 @@
   border: none;
   border-radius: 80px;
   margin-top: 56px;
+
 }

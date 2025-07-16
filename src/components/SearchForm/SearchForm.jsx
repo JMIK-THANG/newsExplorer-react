@@ -3,11 +3,19 @@ import "./SearchForm.css";
 
 const SearchForm = ({ onSearch }) => {
   const [searchItem, setSearchItem] = useState("");
+  const [searchError, setSearchError] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchItem.trim()) {
       onSearch(searchItem.trim());
+    }
+  };
+  const handleSearch = (e) => {
+    if (searchItem.trim() === "") {
+      setSearchError(false);
+    } else {
+      setSearchError(true);
     }
   };
 
@@ -26,10 +34,17 @@ const SearchForm = ({ onSearch }) => {
           value={searchItem}
           onChange={(e) => setSearchItem(e.target.value)}
         />
-        <button type="submit" className="search-form__button">
+        <button
+          type="submit"
+          className="search-form__button"
+          onClick={handleSearch}
+        >
           Search
         </button>
       </form>
+      {!searchError && (
+        <p className="search-form__keyword">Please Enter keywords</p>
+      )}
     </div>
   );
 };

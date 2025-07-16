@@ -56,7 +56,10 @@
 .search-form__button:hover {
   background: #347eff;
 }
-
+.search-form__keyword { 
+  color:red; 
+  text-align:center; 
+}
 @media screen and (max-width: 768px) {
   .search-form__heading {
     max-width: 450px;
