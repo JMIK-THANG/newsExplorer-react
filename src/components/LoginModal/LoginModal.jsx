@@ -7,6 +7,7 @@ const LoginModal = ({
   handleLogin,
   handleSignupClick,
 }) => {
+  console.log({ handleLogin });
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -22,6 +23,7 @@ const LoginModal = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(handleLogin);
     handleLogin(data);
   };
   return (

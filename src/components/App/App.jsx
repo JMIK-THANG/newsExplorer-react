@@ -10,7 +10,8 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessRegisterModal from "../SucessRegisterModal/SuccessRegisterModal";
 import { fetchNews } from "../../utils/api";
 import Footer from "../Footer/Footer";
-
+import { authorize, checkToken } from "../../utils/Auth";
+import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,7 +21,19 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
   const [error, setError] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
+  const handleLogin = ({ email, password }) => {
+    console.log("handleLogin");
+    authorize(email, password).then((data) => {
+      checkToken(data.token).then((data) => {
+        console.log("setCurrentUser");
+        setCurrentUser(data.data);
+        setIsLoggedIn(true);
+        handleCloseClick();
+      });
+    });
+  };
   const handleSearch = async (query) => {
     if (!query.trim()) return;
 
@@ -76,49 +89,52 @@ const App = () => {
   };
 
   return (
-    <div className="page">
-      <div className="page__section">
-        <div className="page__content">
-          <Header
-            handleLoginClick={handleSigninClick}
-            isLoggedIn={isLoggedIn}
-            onSearch={handleSearch}
-          />
-          {isLoading && <Preloader />}
-          {!isLoading && error && <div>{error}</div>}
-          {!isLoading && searchResults.length > 0 && (
-            <NewsGrid
-              searchResults={searchResults}
-              onShowMore={handleShowMore}
-              moreArticles={moreArticles}
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <div className="page__section">
+          <div className="page__content">
+            <Header
+              handleLoginClick={handleSigninClick}
+              isLoggedIn={isLoggedIn}
+              onSearch={handleSearch}
             />
-          )}
-          {!isLoading && searchResults.length === 0 && searchQuery && (
-            <div className="no-results">
-              No Articles found for "{searchQuery}"
-            </div>
-          )}
-          <About />
-          <RegisterModal
-            isOpen={activeModal === "signup"}
-            handleCloseClick={handleCloseClick}
-            handleSigninClick={handleSigninClick}
-            handleSuccessRegistration={handleSuccessRegistration}
-          />
-          <LoginModal
-            isOpen={activeModal === "signin"}
-            handleCloseClick={closeActiveModal}
-            handleSignupClick={handleSignupClick}
-          />
-          <SuccessRegisterModal
-            isOpen={activeModal === "success"}
-            handleSigninclick={handleSigninClick}
-            handleCloseClick={handleCloseClick}
-          />
-          <Footer />
+            {isLoading && <Preloader />}
+            {!isLoading && error && <div>{error}</div>}
+            {!isLoading && searchResults.length > 0 && (
+              <NewsGrid
+                searchResults={searchResults}
+                onShowMore={handleShowMore}
+                moreArticles={moreArticles}
+              />
+            )}
+            {!isLoading && searchResults.length === 0 && searchQuery && (
+              <div className="no-results">
+                Sorry but nothing matched your search item"{searchQuery}"
+              </div>
+            )}
+            <About />
+            <RegisterModal
+              isOpen={activeModal === "signup"}
+              handleCloseClick={handleCloseClick}
+              handleSigninClick={handleSigninClick}
+              handleSuccessRegistration={handleSuccessRegistration}
+            />
+            <LoginModal
+              isOpen={activeModal === "signin"}
+              handleCloseClick={closeActiveModal}
+              handleSignupClick={handleSignupClick}
+              handleLogin={handleLogin}
+            />
+            <SuccessRegisterModal
+              isOpen={activeModal === "success"}
+              handleSigninclick={handleSigninClick}
+              handleCloseClick={handleCloseClick}
+            />
+            <Footer />
+          </div>
         </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
 };
 

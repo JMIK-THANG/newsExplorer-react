@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Header.css";
 
-function Header({ handleLoginClick, isLoggedIn, onSearch}) {
+function Header({ handleLoginClick, isLoggedIn, onSearch, }) {
+
   return (
     <div className="header">
       <Navigation
