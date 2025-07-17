@@ -5,7 +5,8 @@
   padding-bottom: 24px;
 }
 .news-card__image {
-  width: 400px;
+  max-width: 400px;
+  width:100%; 
   height: 272px;
   object-fit: cover;
   border-top-left-radius: 16px;

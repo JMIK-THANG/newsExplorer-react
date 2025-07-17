@@ -3,8 +3,9 @@ import "./NewsCard.css";
 import bookmarknormal from "../../assets/bookmarknormal.svg";
 import bookmarkhover from "../../assets/bookmarkhover.svg";
 const NewsCard = ({ article }) => {
+  
   const [isHovered, setIsHovered] = useState(false);
- console.log(article);
+
   return (
     <div className="news-card">
       <img

@@ -22,7 +22,13 @@
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   color: #fff;
+  cursor: pointer;
 }
 .navigation-logged__color {
   color: #1a1b22;
+}
+@media screen and (max-width: 700px) {
+  .navigation-logged__menu {
+    display: none;
+  }
 }

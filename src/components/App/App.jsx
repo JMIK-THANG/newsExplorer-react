@@ -13,6 +13,8 @@ import { fetchNews } from "../../utils/api";
 import Footer from "../Footer/Footer";
 import { authorize, checkToken } from "../../utils/Auth";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
+import { Route, Routes } from "react-router-dom";
+import SaveArticles from "../SaveArticles/SaveArticles";
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -119,29 +121,53 @@ const App = () => {
       <div className="page">
         <div className="page__section">
           <div className="page__content">
-            <Header
-              handleLoginClick={handleSigninClick}
-              isLoggedIn={isLoggedIn}
-              onSearch={handleSearch}
-              handleLogout={handleLogout}
-            />
-            {isLoading && <Preloader />}
-            {!isLoading && error && <div>{error}</div>}
-            {!isLoading && searchResults.length > 0 && (
-              <NewsGrid
-                searchResults={searchResults}
-                onShowMore={handleShowMore}
-                moreArticles={moreArticles}
-              />
-            )}
-            {!isLoading && searchResults.length === 0 && searchQuery && (
-              <div className="no-results">
-                <img src={notfoundImg} alt="not found image" />
-                <h1>Nothing found</h1>
-                <p>Sorry but nothing matched your search item"{searchQuery}"</p>
-              </div>
-            )}
-            <About />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Header
+                      handleLoginClick={handleSigninClick}
+                      isLoggedIn={isLoggedIn}
+                      onSearch={handleSearch}
+                      handleLogout={handleLogout}
+                    />
+                    {isLoading && <Preloader />}
+                    {!isLoading && error && <div>{error}</div>}
+                    {!isLoading && searchResults.length > 0 && (
+                      <NewsGrid
+                        searchResults={searchResults}
+                        onShowMore={handleShowMore}
+                        moreArticles={moreArticles}
+                      />
+                    )}
+                    {!isLoading &&
+                      searchResults.length === 0 &&
+                      searchQuery && (
+                        <div className="no-results">
+                          <img src={notfoundImg} alt="not found image" />
+                          <h1>Nothing found</h1>
+                          <p>
+                            Sorry but nothing matched your search item"
+                            {searchQuery}"
+                          </p>
+                        </div>
+                      )}
+                    <About />
+                  </>
+                }
+              ></Route>
+              <Route
+                path="/saved-news"
+                element={
+                  <SaveArticles
+                    handleLoginClick={handleCloseClick}
+                    isLoggedIn={isLoggedIn}
+                    handleLogout={handleLogout}
+                  />
+                }
+              ></Route>
+            </Routes>
             <RegisterModal
               isOpen={activeModal === "signup"}
               handleCloseClick={handleCloseClick}

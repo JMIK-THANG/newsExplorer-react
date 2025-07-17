@@ -1,11 +1,12 @@
-import React, { useContext} from "react";
-import "./Navigation.css";
+import React, { useContext } from "react";
+import "./SaveArticles.css";
 import menu from "../../assets/menu.svg";
-import NavLoggedIn from "./NavLoggedIn";
+import NavLoggedIn from "../Navigation/NavLoggedIn";
+import news from "../../utils/news";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
-import { Link } from "react-router-dom";
+import NewsCard from "../NewsCard/NewsCard";
 
-const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
+const SaveArticles = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="navigation">
@@ -16,11 +17,7 @@ const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
       {isLoggedIn && <div>{currentUser.name}</div>}
       {!isLoggedIn && (
         <div className="navigation__menu">
-        
-          <Link>
-            <p className="navigation__link navigation__link-home">Home</p>
-          </Link>
-
+          <p className="navigation__link navigation__link-home">Home</p>
           <button
             onClick={handleLoginClick}
             type="button"
@@ -32,8 +29,19 @@ const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
       )}
 
       {isLoggedIn && <NavLoggedIn handleLogout={handleLogout} />}
+
+      <div className="saved-articles">
+        {news.map((item) => {
+          return <NewsCard article={item} />;
+        })}
+        <h2 className="saved-articles__heading">Saved articles</h2>
+        <h1 className="saved-articles__header">
+          Elise, you have 5 saved articles
+        </h1>
+        <p className="saved-articles__name">By keywords: abc lsdfl</p>
+      </div>
     </div>
   );
 };
 
-export default Navigation;
+export default SaveArticles;
