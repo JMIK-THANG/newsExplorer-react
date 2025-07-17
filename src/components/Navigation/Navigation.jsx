@@ -4,7 +4,7 @@ import menu from "../../assets/menu.svg";
 import NavLoggedIn from "./NavLoggedIn";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 
-const Navigation = ({ handleLoginClick, isLoggedIn }) => {
+const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
   const currentUser = useContext(CurrentUserContext);
   return (
     <div className="navigation">
@@ -26,7 +26,7 @@ const Navigation = ({ handleLoginClick, isLoggedIn }) => {
         </div>
       )}
 
-      {isLoggedIn && <NavLoggedIn />}
+      {isLoggedIn && <NavLoggedIn handleLogout={handleLogout} />}
     </div>
   );
 };

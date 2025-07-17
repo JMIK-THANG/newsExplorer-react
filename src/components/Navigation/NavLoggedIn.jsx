@@ -1,15 +1,20 @@
-
 import React from "react";
 import logout from "../../assets/logout.svg";
 import "./NavLoggedIn.css";
 
-const NavLoggedIn = () => {
+const NavLoggedIn = ({ handleLogout }) => {
   return (
     <div className="navigation-logged">
       <div className="navigation-logged__menu">
-        <p className="navigation-logged__link navigation-logged__Link-home">Home</p>
+        <p className="navigation-logged__link navigation-logged__Link-home">
+          Home
+        </p>
         <p className="navigation-logged__article-save">Save Articles</p>
         <button
+          onClick={() => {
+            console.log("Logout button clicked");
+            handleLogout();
+          }}
           type="button"
           className="navigation-logged__button navigation-logged__link-logout"
         >

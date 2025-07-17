@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Navigate } from "react";
 import "./App.css";
 import backgroundImg from "../../assets/background.svg";
+import notfoundImg from "../../assets/notfound.svg";
 import Header from "../../components/Header/Header";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
@@ -24,16 +25,19 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const handleLogin = ({ email, password }) => {
-    console.log("handleLogin");
     authorize(email, password).then((data) => {
       checkToken(data.token).then((data) => {
-        console.log("setCurrentUser");
         setCurrentUser(data.data);
         setIsLoggedIn(true);
         handleCloseClick();
       });
     });
   };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
   const handleSearch = async (query) => {
     if (!query.trim()) return;
 
@@ -43,9 +47,7 @@ const App = () => {
     try {
       const { articles, totalResults } = await fetchNews(query, 3, 1);
       setSearchResults(articles);
-      console.log(articles);
       setTotalResults(totalResults);
-      console.log(totalResults);
       setError(null);
     } catch (err) {
       setError("Error fetching news. Please try again.");
@@ -76,7 +78,11 @@ const App = () => {
     setActiveModal("");
   };
   const handleSigninClick = () => {
-    setActiveModal("signin");
+    if (isLoggedIn) {
+      handleLogout();
+    } else {
+      setActiveModal("signin");
+    }
   };
   const handleSignupClick = () => {
     setActiveModal("signup");
@@ -87,7 +93,27 @@ const App = () => {
   const handleCloseClick = () => {
     setActiveModal("");
   };
+  useEffect(() => {
+    if (!activeModal) return;
 
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+    const handleOverlayClick = (e) => {
+      if (e.target.classList.contains("modal_opened")) {
+        closeActiveModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("mousedown", handleOverlayClick);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("mousedown", handleOverlayClick);
+    };
+  }, [activeModal]);
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -97,6 +123,7 @@ const App = () => {
               handleLoginClick={handleSigninClick}
               isLoggedIn={isLoggedIn}
               onSearch={handleSearch}
+              handleLogout={handleLogout}
             />
             {isLoading && <Preloader />}
             {!isLoading && error && <div>{error}</div>}
@@ -109,7 +136,9 @@ const App = () => {
             )}
             {!isLoading && searchResults.length === 0 && searchQuery && (
               <div className="no-results">
-                Sorry but nothing matched your search item"{searchQuery}"
+                <img src={notfoundImg} alt="not found image" />
+                <h1>Nothing found</h1>
+                <p>Sorry but nothing matched your search item"{searchQuery}"</p>
               </div>
             )}
             <About />
