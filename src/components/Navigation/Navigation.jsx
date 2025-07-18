@@ -3,13 +3,22 @@ import "./Navigation.css";
 import menu from "../../assets/menu.svg";
 import Logout from "../../assets/logout.svg";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
   const currentUser = useContext(CurrentUserContext);
+  const location = useLocation();
+  console.log(location);
+  const isSaveArticles = location.pathname === "/saved-news";
   return (
-    <div className="navigation">
-      <h1 className="navigation__logo">NewsExplorer</h1>
+    <div className={`navigation ${isSaveArticles ? "navigation_dark" : ""}`}>
+      <h1
+        className={`navigation__logo ${
+          isSaveArticles ? "navigation__logo_dark" : ""
+        }`}
+      >
+        NewsExplorer
+      </h1>
       <button type="button" className="navigation__mobile">
         <img src={menu} alt="nav menu mobile" />
       </button>
@@ -32,9 +41,13 @@ const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
       {isLoggedIn && (
         <div className="navigation-logged">
           <div className="navigation-logged__menu">
-            <Link to="/" className="navigation-logged_link navigation-logged_Link-home">
-                Home
+            <Link
+              to="/"
+              className="navigation-logged_link navigation-logged_Link-home"
+            >
+              Home
             </Link>
+
             <Link to="/saved-news">
               <p className="navigation-logged__article-save">Save Articles</p>
             </Link>

@@ -28,9 +28,9 @@ const App = () => {
   const [error, setError] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentLocation, setCurrentLocation] = useState("/");
-  
-  const location = useLocation(); 
-  
+
+  const location = useLocation();
+  console.log("location", location);
   const handleLogin = ({ email, password }) => {
     authorize(email, password).then((data) => {
       checkToken(data.token).then((data) => {
