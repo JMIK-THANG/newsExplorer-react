@@ -18,7 +18,7 @@ const SaveArticles = ({ handleLoginClick, isLoggedIn }) => {
         </button>
         {!isLoggedIn && (
           <div className="navigation__menu">
-            <Link>
+            <Link to="/">
               <p className="navigation__link navigation__link-home">Home</p>
             </Link>
             <button

@@ -10,6 +10,7 @@
 .navigation_dark {
   color: #000;
 }
+
 .navigation__mobile {
   display: none;
 }
@@ -39,7 +40,7 @@
   line-height: 24px;
   margin: 0;
   text-decoration: none;
-  color: white;
+  color: inherit;
 }
 
 .navigation__link-home {
@@ -90,7 +91,7 @@
   font-weight: 500;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
-  color: #fff;
+  color: inherit;
   cursor: pointer;
 }
 .navigation-logged__color {

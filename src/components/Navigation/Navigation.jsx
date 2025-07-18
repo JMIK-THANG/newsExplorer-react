@@ -43,13 +43,13 @@ const Navigation = ({ handleLoginClick, isLoggedIn, handleLogout }) => {
           <div className="navigation-logged__menu">
             <Link
               to="/"
-              className="navigation-logged_link navigation-logged_Link-home"
+              className="navigation-logged__link navigation-logged__Link-home"
             >
               Home
             </Link>
 
-            <Link to="/saved-news">
-              <p className="navigation-logged__article-save">Save Articles</p>
+            <Link to="/saved-news" className="navigation-logged__article-save">
+              Save Articles
             </Link>
             <button
               onClick={() => {
