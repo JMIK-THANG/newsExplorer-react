@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext, Navigate } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useLocation } from "react-router-dom";
 import "./App.css";
 import backgroundImg from "../../assets/background.svg";
 import notfoundImg from "../../assets/notfound.svg";
@@ -15,6 +16,7 @@ import { authorize, checkToken } from "../../utils/Auth";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 import { Route, Routes } from "react-router-dom";
 import SaveArticles from "../SaveArticles/SaveArticles";
+import { CurrentLocationContext } from "../Contexts/CurrentLocationContexts";
 const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,7 +27,10 @@ const App = () => {
   const [totalResults, setTotalResults] = useState(0);
   const [error, setError] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-
+  const [currentLocation, setCurrentLocation] = useState("/");
+  
+  const location = useLocation(); 
+  
   const handleLogin = ({ email, password }) => {
     authorize(email, password).then((data) => {
       checkToken(data.token).then((data) => {
@@ -95,6 +100,9 @@ const App = () => {
   const handleCloseClick = () => {
     setActiveModal("");
   };
+
+  // Article page
+  useEffect(() => {});
   useEffect(() => {
     if (!activeModal) return;
 
@@ -118,77 +126,79 @@ const App = () => {
   }, [activeModal]);
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div className="page__section">
-          <div className="page__content">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Header
-                      handleLoginClick={handleSigninClick}
+      <CurrentLocationContext.Provider value={currentLocation}>
+        <div className="page">
+          <div className="page__section">
+            <div className="page__content">
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Header
+                        handleLoginClick={handleSigninClick}
+                        isLoggedIn={isLoggedIn}
+                        onSearch={handleSearch}
+                        handleLogout={handleLogout}
+                      />
+                      {isLoading && <Preloader />}
+                      {!isLoading && error && <div>{error}</div>}
+                      {!isLoading && searchResults.length > 0 && (
+                        <NewsGrid
+                          searchResults={searchResults}
+                          onShowMore={handleShowMore}
+                          moreArticles={moreArticles}
+                        />
+                      )}
+                      {!isLoading &&
+                        searchResults.length === 0 &&
+                        searchQuery && (
+                          <div className="no-results">
+                            <img src={notfoundImg} alt="not found image" />
+                            <h1>Nothing found</h1>
+                            <p>
+                              Sorry but nothing matched your search item"
+                              {searchQuery}"
+                            </p>
+                          </div>
+                        )}
+                      <About />
+                    </>
+                  }
+                ></Route>
+                <Route
+                  path="/saved-news"
+                  element={
+                    <SaveArticles
+                      handleLoginClick={handleCloseClick}
                       isLoggedIn={isLoggedIn}
-                      onSearch={handleSearch}
                       handleLogout={handleLogout}
                     />
-                    {isLoading && <Preloader />}
-                    {!isLoading && error && <div>{error}</div>}
-                    {!isLoading && searchResults.length > 0 && (
-                      <NewsGrid
-                        searchResults={searchResults}
-                        onShowMore={handleShowMore}
-                        moreArticles={moreArticles}
-                      />
-                    )}
-                    {!isLoading &&
-                      searchResults.length === 0 &&
-                      searchQuery && (
-                        <div className="no-results">
-                          <img src={notfoundImg} alt="not found image" />
-                          <h1>Nothing found</h1>
-                          <p>
-                            Sorry but nothing matched your search item"
-                            {searchQuery}"
-                          </p>
-                        </div>
-                      )}
-                    <About />
-                  </>
-                }
-              ></Route>
-              <Route
-                path="/saved-news"
-                element={
-                  <SaveArticles
-                    handleLoginClick={handleCloseClick}
-                    isLoggedIn={isLoggedIn}
-                    handleLogout={handleLogout}
-                  />
-                }
-              ></Route>
-            </Routes>
-            <RegisterModal
-              isOpen={activeModal === "signup"}
-              handleCloseClick={handleCloseClick}
-              handleSigninClick={handleSigninClick}
-              handleSuccessRegistration={handleSuccessRegistration}
-            />
-            <LoginModal
-              isOpen={activeModal === "signin"}
-              handleCloseClick={closeActiveModal}
-              handleSignupClick={handleSignupClick}
-              handleLogin={handleLogin}
-            />
-            <SuccessRegisterModal
-              isOpen={activeModal === "success"}
-              handleSigninclick={handleSigninClick}
-              handleCloseClick={handleCloseClick}
-            />
-            <Footer />
+                  }
+                ></Route>
+              </Routes>
+              <RegisterModal
+                isOpen={activeModal === "signup"}
+                handleCloseClick={handleCloseClick}
+                handleSigninClick={handleSigninClick}
+                handleSuccessRegistration={handleSuccessRegistration}
+              />
+              <LoginModal
+                isOpen={activeModal === "signin"}
+                handleCloseClick={closeActiveModal}
+                handleSignupClick={handleSignupClick}
+                handleLogin={handleLogin}
+              />
+              <SuccessRegisterModal
+                isOpen={activeModal === "success"}
+                handleSigninclick={handleSigninClick}
+                handleCloseClick={handleCloseClick}
+              />
+              <Footer />
+            </div>
           </div>
         </div>
-      </div>
+      </CurrentLocationContext.Provider>
     </CurrentUserContext.Provider>
   );
 };

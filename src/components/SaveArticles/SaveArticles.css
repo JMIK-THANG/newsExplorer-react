@@ -1,4 +1,6 @@
-/* .navigation {
+
+
+.navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,6 +39,7 @@
   position: relative;
   margin: 0;
 }
+
 .navigation__link-home::after {
   position: absolute;
   content: "";
@@ -55,6 +58,7 @@
   color: white;
   background: transparent;
 }
+
 
 @media screen and (max-width: 768px) {
   .navigation {
@@ -89,4 +93,4 @@
     border: none;
     
   }
-} */
+}
