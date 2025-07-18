@@ -25,17 +25,20 @@
   align-items: center;
   gap: 40px;
 }
-.navigation__link {
+.navigation_link {
   font-family: "roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   margin: 0;
+   text-decoration:none; 
+  color: white; 
 }
 
 .navigation__link-home {
   position: relative;
   margin: 0;
+ 
 }
 
 .navigation__link-home::after {
@@ -48,7 +51,7 @@
   background-color: #fff;
   margin: 0;
 }
-.navigation__link-signin {
+.navigation_link-signin {
   width: 176px;
   height: 48px;
   border: 1px solid white;
@@ -69,7 +72,7 @@
   line-height: 24px;
   font-weight: 500;
 }
-.navigation-logged__button {
+.navigation-logged_button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +95,6 @@
     display: none;
   }
 }
-
 
 @media screen and (max-width: 768px) {
   .navigation {
@@ -125,6 +127,5 @@
     display: block;
     background: transparent;
     border: none;
-    
   }
 }
