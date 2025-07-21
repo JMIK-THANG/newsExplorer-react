@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate} from "react-router-dom";
 import "./App.css";
 
 import LoginModal from "../LoginModal/LoginModal";
@@ -10,19 +10,14 @@ import { authorize, checkToken } from "../../utils/Auth";
 import Footer from "../Footer/Footer";
 import SaveArticles from "../SaveArticles/SaveArticles";
 import Main from "../Main/Main";
-import Navigation from "../Navigation/Navigation";
-
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 import { CurrentLocationContext } from "../Contexts/CurrentLocationContexts";
 
 const App = () => {
+  const navigate = useNavigate();
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [currentLocation, setCurrentLocation] = useState("/");
-
-  const location = useLocation();
-  console.log("location", location);
 
   const handleLogin = ({ email, password }) => {
     authorize(email, password).then((data) => {
@@ -37,6 +32,7 @@ const App = () => {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
+    navigate("/");
   };
 
   const closeActiveModal = () => {
@@ -89,27 +85,25 @@ const App = () => {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <CurrentLocationContext.Provider value={currentLocation}>
         <div className="page">
           <div className="page__section">
             <div className="page__content">
-              <Navigation
-                handleLogout={handleLogout}
-                // handleLoginClick={handleLoginClick} // you can enable if needed
-                isLoggedIn={isLoggedIn}
-              />
               <Routes>
                 <Route
                   path="/"
                   element={
-                    <Main isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+                    <Main
+                      isLoggedIn={isLoggedIn}
+                      handleLogout={handleLogout}
+                      handleSigninClick={handleSigninClick}
+                    />
                   }
                 />
                 <Route
                   path="/saved-news"
                   element={
                     <SaveArticles
-                      handleLoginClick={handleCloseClick}
+                      handleCloseClick={handleCloseClick}
                       isLoggedIn={isLoggedIn}
                       handleLogout={handleLogout}
                     />
@@ -130,14 +124,13 @@ const App = () => {
               />
               <SuccessRegisterModal
                 isOpen={activeModal === "success"}
-                handleSigninclick={handleSigninClick}
+                handleSigninlCick={handleSigninClick}
                 handleCloseClick={handleCloseClick}
               />
               <Footer />
             </div>
           </div>
         </div>
-      </CurrentLocationContext.Provider>
     </CurrentUserContext.Provider>
   );
 };

@@ -3,12 +3,10 @@
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  color: white;
   border-bottom: 1px solid #ffffff33;
   padding: 0 104px 0;
-}
-.navigation_dark {
-  color: #000;
+  background: transparent;
+  color: white;
 }
 
 .navigation__mobile {
@@ -23,24 +21,27 @@
   line-height: 24px;
   vertical-align: middle;
   margin: 0;
-  color: #fff;
+  color: white;
 }
 .navigation__logo_dark {
   color: #000;
+}
+.navigation__text_dark {
+  color: black;
 }
 .navigation__menu {
   display: flex;
   align-items: center;
   gap: 40px;
 }
-.navigation_link {
+.navigation__link {
   font-family: "roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   margin: 0;
   text-decoration: none;
-  color: inherit;
+  color: #fff;
 }
 
 .navigation__link-home {
@@ -58,28 +59,29 @@
   background-color: #fff;
   margin: 0;
 }
-.navigation_link-signin {
+.navigation__link-signin {
   width: 176px;
   height: 48px;
   border: 1px solid white;
   border-radius: 100px;
   color: white;
   background: transparent;
+  cursor: pointer;
 }
 
-/* Navigation Logged in */
+/* navigation login  */
+
 .navigation-logged__menu {
   display: flex;
   align-items: center;
   gap: 76px;
 }
-.navigation-logged__menu p {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 500;
+.navigation-logged__link {
+  text-decoration: none;
+  color: white;
 }
-.navigation-logged_button {
+
+.navigation-logged__button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,16 +93,14 @@
   font-weight: 500;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
-  color: inherit;
+  color: white;
   cursor: pointer;
 }
-.navigation-logged__color {
-  color: #1a1b22;
+.navigation-logged__link_dark {
+  color: #000;
 }
-@media screen and (max-width: 700px) {
-  .navigation-logged__menu {
-    display: none;
-  }
+.navigation-logged__button_dark {
+  color: #000;
 }
 
 @media screen and (max-width: 768px) {
@@ -134,5 +134,8 @@
     display: block;
     background: transparent;
     border: none;
+  }
+  .navigation-logged__menu {
+    display: none;
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Main.css"
 import Header from "../Header/Header";
 import Preloader from "../Preloader/Preloader";
 import NewsGrid from "../NewsGrid/NewsGrid";
@@ -6,7 +7,7 @@ import About from "../About/About";
 import notfoundImg from "../../assets/notfound.svg";
 import { fetchNews } from "../../utils/api";
 
-const Main = ({ isLoggedIn, handleLogout }) => {
+const Main = ({ isLoggedIn, handleLogout, handleSigninClick}) => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,9 +57,9 @@ const Main = ({ isLoggedIn, handleLogout }) => {
         isLoggedIn={isLoggedIn}
         onSearch={handleSearch}
         handleLogout={handleLogout}
+        handleSigninClick={handleSigninClick}
       />
       {isLoading && <Preloader />}
-      {!isLoading && error && <div>{error}</div>}
       {!isLoading && searchResults.length > 0 && (
         <NewsGrid
           searchResults={searchResults}

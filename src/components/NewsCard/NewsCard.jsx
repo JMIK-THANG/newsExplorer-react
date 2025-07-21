@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./NewsCard.css";
+import deleteButtonDefault from "../../assets/delete-normal.png";
+import deleteButtonHover from "../../assets/delete-hover.svg";
 import bookmarknormal from "../../assets/bookmarknormal.svg";
 import bookmarkhover from "../../assets/bookmarkhover.svg";
 const NewsCard = ({ article }) => {
-  
   const [isHovered, setIsHovered] = useState(false);
-
+  const isSaveArticles = location.pathname === "/saved-news";
   return (
     <div className="news-card">
       <img
@@ -36,6 +38,25 @@ const NewsCard = ({ article }) => {
             </span>
           )}
         </div>
+        {isSaveArticles && (
+          
+          <div
+            className="news-card__bookmark-container"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <img
+              className="news-card__bookmark"
+              src={isHovered ? deleteButtonHover : deleteButtonDefault}
+              alt="bookmark"
+            />
+            {isHovered && (
+              <span className="news-card__hover-message">
+                Remove from saved
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,43 +1,26 @@
-import { useContext } from "react";
-import "./SaveArticles.css";
-import menu from "../../assets/menu.svg";
-import news from "../../utils/news";
+import React, { useContext } from "react";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 import NewsCard from "../NewsCard/NewsCard";
-import { Link } from "react-router-dom";
+import NewsGrid from "../NewsGrid/NewsGrid";
+import Navigation from "../Navigation/Navigation";
+import news from "../../utils/news";
+import "./SaveArticles.css";
 
-const SaveArticles = ({ handleLoginClick, isLoggedIn }) => {
+const SaveArticles = ({ isLoggedIn, handleLogout }) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
-    <div>
-      <div className="navigation">
-        <h1 className="navigation__logo">NewsExplorer</h1>
-        <button type="button" className="navigation__mobile">
-          <img src={menu} alt="nav menu mobile" />
-        </button>
-        {!isLoggedIn && (
-          <div className="navigation__menu">
-            <Link to="/">
-              <p className="navigation__link navigation__link-home">Home</p>
-            </Link>
-            <button
-              onClick={handleLoginClick}
-              type="button"
-              className="navigation__link navigation__link-signin"
-            >
-              Sign in
-            </button>
-          </div>
-        )}
-      </div>
+    <>
+      <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
 
       <div className="saved-articles">
         <h2 className="saved-articles__heading">Saved articles</h2>
+
         <h1 className="saved-articles__header">
-          {currentUser?.name || "Elise"}, you have {news.length} saved articles
+          {currentUser?.name || "User"}, you have {news.length} saved articles
         </h1>
-        <p className="saved-articles__name">
+
+        <p className="saved-articles__keywords">
           By keywords:
           <span className="keyword-chip">Nature</span>
           <span className="keyword-chip">Yellowstone</span>
@@ -46,11 +29,11 @@ const SaveArticles = ({ handleLoginClick, isLoggedIn }) => {
 
         <div className="news-card-container">
           {news.map((item, i) => (
-            <NewsCard key={i} article={item} />
+            <NewsCard key={i} article={item} isSavedPage={true} />
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
