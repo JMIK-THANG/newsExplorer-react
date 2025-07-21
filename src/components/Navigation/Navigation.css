@@ -8,7 +8,6 @@
   background: transparent;
   color: white;
 }
-
 .navigation__mobile {
   display: none;
 }
@@ -27,6 +26,9 @@
   color: #000;
 }
 .navigation__text_dark {
+  color: black;
+}
+.user__name-text-dark {
   color: black;
 }
 .navigation__menu {
@@ -52,7 +54,7 @@
 .navigation__link-home::after {
   position: absolute;
   content: "";
-  top: 50px;
+  top: 48px;
   left: 0;
   height: 2px;
   width: 120%;

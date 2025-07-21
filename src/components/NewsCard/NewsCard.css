@@ -3,6 +3,7 @@
   background: #fff;
   border-radius: 16px;
   padding-bottom: 24px;
+  width:400px; 
 }
 .news-card__image {
   max-width: 400px;
@@ -54,6 +55,11 @@
   position: absolute;
   top: 24px;
   right: 24px;
+}
+.news-card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
 }
 .bookmark-title {
   position: absolute;

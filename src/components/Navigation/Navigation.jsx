@@ -11,6 +11,7 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
   const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
   const isSaveArticles = location.pathname === "/saved-news";
+  const isHome = location.pathname === "/";
   return (
     <div className="navigation">
       <h1
@@ -23,10 +24,19 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
       <button type="button" className="navigation__mobile">
         <img src={isSaveArticles ? darkMenuIcon : menu} alt="nav menu mobile" />
       </button>
-      {isLoggedIn && <div>{currentUser.name}</div>}
+      {isLoggedIn && (
+        <div className={`${isSaveArticles ? "user__name-text-dark" : ""}`}>
+          {currentUser.name}
+        </div>
+      )}
       {!isLoggedIn && (
         <div className="navigation__menu">
-          <Link to="/" className="navigation__link navigation__link-home">
+          <Link
+            to="/"
+            className={`navigation__link navigation__link-home ${
+              isHome ? "navigation__link" : ""
+            }`}
+          >
             Home
           </Link>
 
@@ -44,9 +54,9 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
           <div className="navigation-logged__menu">
             <Link
               to="/"
-              className={`navigation-logged__link navigation-logged__Link-home ${
-                isSaveArticles ? "navigation-logged__link_dark" : ""
-              }`}
+              className={`navigation-logged__link navigation-logged__link-home ${
+                isHome ? "navigation__link-home" : ""
+              } ${isSaveArticles ? "navigation-logged__link_dark" : ""}`}
             >
               Home
             </Link>
@@ -54,8 +64,9 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
             <Link
               to="/saved-news"
               className={`navigation-logged__link navigation-logged__article-save ${
-                isSaveArticles ? "navigation-logged__link_dark" : ""
-              }`}
+                isSaveArticles ? "navigation__link-home" : ""
+              } ${isSaveArticles ? "navigation__link-home-black" : ""} 
+              ${isSaveArticles ? "navigation-logged__link_dark" : ""}`}
             >
               Saved Articles
             </Link>

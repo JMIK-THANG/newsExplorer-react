@@ -13,6 +13,7 @@ const news = [
     urlToImage:
       "https://ds-images.bolavip.com/news/image?src=https://images.worldsoccertalk.com/webp/1200_740/WST_20250716_WST_579462_Leicy-Santos-1200x740.webp&width=1200&height=740",
     publishedAt: "2025-07-16T20:00:00Z",
+    keyword: "Football",
     content:
       "World Soccer Talk © 2025. Made in Florida.\r\nWorld Soccer Talk, like Futbol Sites, is a company owned by Better Collective. All rights reserved. World Soccer Talk is reader-supported and may earn a co… [+34 chars]",
   },
@@ -28,6 +29,7 @@ const news = [
     url: "https://www.space.com/stargazing/skywatching-kit/best-cameras-for-kids",
     urlToImage: "https://cdn.mos.cms.futurecdn.net/8CT6GXQwzSw3ZuNGKucFU3.jpg",
     publishedAt: "2025-07-16T20:00:00Z",
+    keyword: "Cameras",
     content:
       "Unless you're buying for a very young child, buying a camera for a child isn't just about finding the smallest, most colorful or cheapest option — it's about choosing something that suits how kids le… [+15633 chars]",
   },
@@ -45,6 +47,7 @@ const news = [
     urlToImage:
       "https://i.abcnewsfe.com/a/43ccdde0-f572-4433-9b31-1239057b5bfa/wirestory_244684174cf192e666310a7b5df669a8_16x9.jpg?w=1600",
     publishedAt: "2025-07-16T19:50:21Z",
+    keyword: "Economy",
     content:
       "WASHINGTON -- American companies in China are reporting record-low new investment plans for this year and declining confidence in profits, while uncertainty in U.S.-China relations and President Dona… [+3533 chars]",
   },
