@@ -1,62 +1,3 @@
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  padding: 0 104px;
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.navigation__logo {
-  font-family: "Roboto Slab", serif;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.navigation__menu {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
-.navigation__link {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  /* color: #000; */
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.navigation__link:hover {
-  opacity: 0.8;
-}
-
-.navigation__link-home::after {
-  content: "";
-  display: block;
-  margin-top: 4px;
-  height: 2px;
-  width: 100%;
-  background-color: white;
-}
-
-.navigation__link-signin {
-  padding: 10px 24px;
-  border: 1px solid white;
-  border-radius: 50px;
-  background: transparent;
-  font-size: 16px;
-}
-
-.navigation__mobile {
-  display: none;
-  background: transparent;
-  border: none;
-}
-
 .saved-articles {
   padding: 40px 104px;
   background-color: #f5f5f5;
@@ -70,7 +11,7 @@
   font-size: 18px;
   line-height: 24px;
   color: #1a1b2280;
-  margin:0 0  28px;
+  margin: 0 0 28px;
 }
 
 .saved-articles__header {
@@ -78,7 +19,7 @@
   font-size: 40px;
   line-height: 46px;
   font-weight: 400;
-  margin:0 0  30px;
+  margin: 0 0 30px;
 }
 
 .saved-articles__keywords {
@@ -87,7 +28,7 @@
   font-weight: 400;
   line-height: 24px;
   color: #666;
-  margin:0 0  56px;
+  margin: 0 0 56px;
 }
 
 .keyword-chip {
@@ -98,9 +39,9 @@
   font-size: 14px;
   margin-left: 6px;
 }
-.horizontal{ 
-  margin:0; 
-  background:rgba(209, 210, 214, 1) 
+.horizontal {
+  margin: 0;
+  background: rgba(209, 210, 214, 1);
 }
 .news-card-container {
   display: grid;
@@ -117,7 +58,9 @@
   .navigation__menu {
     gap: 20px;
   }
-
+  .navigation__link-home::after {
+    display: none;
+  }
   .navigation__link-signin {
     padding: 8px 20px;
     font-size: 14px;
@@ -127,15 +70,11 @@
     padding: 24px;
   }
 }
-.saved-articles__header{ 
-  font-size:30px; 
+.saved-articles__header {
+  font-size: 30px;
 }
 
 @media screen and (max-width: 768px) {
-  .navigation__menu {
-    display: none;
-  }
-
   .navigation__mobile {
     display: block;
   }

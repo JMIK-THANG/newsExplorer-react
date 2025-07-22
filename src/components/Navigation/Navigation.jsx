@@ -27,6 +27,12 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
       >
         NewsExplorer
       </h1>
+
+      {isLoggedIn && (
+        <div className={`${isSaveArticles ? "user__name-text-dark" : ""}`}>
+          {currentUser.name}
+        </div>
+      )}
       <button
         type="button"
         className="navigation__mobile"
@@ -34,7 +40,6 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
       >
         <img src={isSaveArticles ? darkMenuIcon : menu} alt="nav menu mobile" />
       </button>
-
       <div
         className={`navigation__overlay ${
           isMenuOpen ? "navigation__overlay_open" : ""
@@ -43,11 +48,6 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
         <button className="navigation__close" onClick={handleMenuToggle}>
           <img src={closeBtn} alt="" className="navigation__mobile-close" />
         </button>
-        {isLoggedIn && (
-          <div className={`${isSaveArticles ? "user__name-text-dark" : ""}`}>
-            {currentUser.name}
-          </div>
-        )}
         {!isLoggedIn && (
           <div className="navigation__menu">
             <Link

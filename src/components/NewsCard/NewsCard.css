@@ -3,7 +3,6 @@
   background: #fff;
   border-radius: 16px;
   padding-bottom: 24px;
-  width: 400px;
 }
 .news-card__image {
   max-width: 400px;
@@ -35,6 +34,7 @@
 
 .news-card__description {
   font-family: "Roboto", Georgia, serif;
+  font-weight: 400;
   font-size: 16px;
   line-height: 22px;
   color: #1a1b22;
@@ -96,9 +96,20 @@
   transition: opacity 0.6s ease;
   z-index: 10;
 }
+@media screen and (max-width: 768px) {
+  .news-card__image {
+    height: 150px;
+  }
 
-@media screen and (max-width: 768) {
-  .news-card {
-    width: 224px;
+  .news-card__title {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-size: 22px;
+    line-height: 24px;
+    color: #1a1b22;
+    margin: 0 0 10px;
+  }
+
+  .news-card__description {
+    margin: 0 0 12px;
   }
 }

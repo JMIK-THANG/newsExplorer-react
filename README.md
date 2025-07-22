@@ -41,3 +41,11 @@
 
 ### External API
 - [News API](https://newsapi.org/)
+
+# Final Project React
+
+## 🚀 Live Demo
+[https://jmik-thang.github.io/final_project_react/](https://jmik-thang.github.io/final_project_react/)
+
+## 📄 Description
+This is a React-based project deployed with GitHub Pages.
