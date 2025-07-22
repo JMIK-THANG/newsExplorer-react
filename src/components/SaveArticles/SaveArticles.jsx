@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 import NewsCard from "../NewsCard/NewsCard";
-import NewsGrid from "../NewsGrid/NewsGrid";
 import Navigation from "../Navigation/Navigation";
 import news from "../../utils/news";
 import "./SaveArticles.css";

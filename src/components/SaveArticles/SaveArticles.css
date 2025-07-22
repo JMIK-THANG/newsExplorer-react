@@ -127,6 +127,9 @@
     padding: 24px;
   }
 }
+.saved-articles__header{ 
+  font-size:30px; 
+}
 
 @media screen and (max-width: 768px) {
   .navigation__menu {
