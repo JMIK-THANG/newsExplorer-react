@@ -8,6 +8,7 @@ import bookmarkhover from "../../assets/bookmarkhover.svg";
 
 const NewsCard = ({ article }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const location = useLocation();
   const isSaveArticles = location.pathname === "/saved-news";
   return (
     <div className="news-card">
@@ -23,7 +24,7 @@ const NewsCard = ({ article }) => {
         <h3 className="news-card__title">{article.title}</h3>
         <p className="news-card__description">{article.description}</p>
         <p className="news-card__author">{article.author}</p>
-        <div
+        <button
           className="news-card__bookmark-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -35,10 +36,10 @@ const NewsCard = ({ article }) => {
           />
           {isHovered && (
             <span className="news-card__hover-message">
-              Sign in to save articles
+              Sign in to save
             </span>
           )}
-        </div>
+        </button>
         {isSaveArticles && (
           <>
             <p className="news-card__keyword">{article.keyword}</p>

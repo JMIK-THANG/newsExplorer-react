@@ -12,7 +12,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
   return (
     <>
       <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-
+<hr className="horizontal"/>
       <div className="saved-articles">
         <h2 className="saved-articles__heading">Saved articles</h2>
 
@@ -29,7 +29,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
 
         <div className="news-card-container">
           {news.map((item, i) => (
-            <NewsCard key={i} article={item} isSavedPage={true} />
+            <NewsCard key={i} article={item}/>
           ))}
         </div>
       </div>

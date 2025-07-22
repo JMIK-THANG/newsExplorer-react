@@ -70,7 +70,6 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
             >
               Saved Articles
             </Link>
-
             <button
               onClick={handleLogout}
               type="button"

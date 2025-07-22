@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  /* padding: 0 104px; */
+  padding: 0 104px;
   color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -70,7 +70,7 @@
   font-size: 18px;
   line-height: 24px;
   color: #1a1b2280;
-  margin-bottom: 28px;
+  margin:0 0  28px;
 }
 
 .saved-articles__header {
@@ -78,16 +78,16 @@
   font-size: 40px;
   line-height: 46px;
   font-weight: 400;
-  margin-bottom: 30px;
+  margin:0 0  30px;
 }
 
-.saved-articles__name {
+.saved-articles__keywords {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
   color: #666;
-  margin-bottom: 24px;
+  margin:0 0  56px;
 }
 
 .keyword-chip {
@@ -98,7 +98,10 @@
   font-size: 14px;
   margin-left: 6px;
 }
-
+.horizontal{ 
+  margin:0; 
+  background:rgba(209, 210, 214, 1) 
+}
 .news-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
