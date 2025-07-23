@@ -49,32 +49,10 @@
 }
 
 @media screen and (max-width: 768px) {
-  .navigation {
-    padding: 0 20px;
-    height: 70px;
-  }
-
-  .navigation__menu {
-    gap: 20px;
-  }
-  .navigation__link-home::after {
-    display: none;
-  }
-  .navigation__link-signin {
-    padding: 8px 20px;
-    font-size: 14px;
-  }
-
   .saved-articles {
-    padding: 24px;
+    padding: 16px;
   }
 }
 .saved-articles__header {
   font-size: 30px;
-}
-
-@media screen and (max-width: 768px) {
-  .navigation__mobile {
-    display: block;
-  }
 }

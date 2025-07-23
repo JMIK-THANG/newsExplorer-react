@@ -45,9 +45,13 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
           isMenuOpen ? "navigation__overlay_open" : ""
         }`}
       >
-        <button className="navigation__close" onClick={handleMenuToggle}>
-          <img src={closeBtn} alt="" className="navigation__mobile-close" />
-        </button>
+        <div className="navigation__mobile-header">
+          <h1 className="navigation__mobile-logo">NewsExplorer</h1>
+
+          <button className="navigation__close" onClick={handleMenuToggle}>
+            <img src={closeBtn} alt="" className="navigation__mobile-close" />
+          </button>
+        </div>
         {!isLoggedIn && (
           <div className="navigation__menu">
             <Link
@@ -78,8 +82,10 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
               <Link
                 to="/"
                 className={`navigation-logged__link navigation-logged__link-home ${
-                  isHome ? "navigation__link-home" : ""
-                } ${isSaveArticles ? "navigation-logged__link_dark" : ""}`}
+                  isHome
+                    ? "navigation__link-home"
+                    : "navigation-logged__link_dark"
+                }`}
               >
                 Home
               </Link>
@@ -87,9 +93,8 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
               <Link
                 to="/saved-news"
                 className={`navigation-logged__link navigation-logged__article-save ${
-                  isSaveArticles ? "navigation__link-home" : ""
-                } ${isSaveArticles ? "navigation__link-home-black" : ""} 
-              ${isSaveArticles ? "navigation-logged__link_dark" : ""}`}
+                  isSaveArticles ? "navigation-logged__link_dark" : ""
+                }`}
               >
                 Saved Articles
               </Link>

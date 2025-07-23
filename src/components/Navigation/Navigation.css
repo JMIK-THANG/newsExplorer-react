@@ -28,19 +28,13 @@
 .navigation__logo_dark {
   color: #000;
 }
-.navigation__text_dark {
-  color: black;
-}
-.user__name-text-dark {
-  color: black;
-}
 .navigation__menu {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 .navigation__link {
-  font-family: "roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -84,6 +78,7 @@
 .navigation-logged__link {
   text-decoration: none;
   color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .navigation-logged__button {
@@ -107,7 +102,9 @@
 .navigation-logged__button_dark {
   color: #000;
 }
-
+.mobile__navigation-header {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .navigation {
     padding: 16px;
@@ -124,7 +121,7 @@
   }
   .navigation__link-signin {
     width: 288px;
-    height: 70px;
+    padding: 16px 110px;
   }
   .navigation__mobile {
     display: block;
@@ -165,5 +162,18 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
+  }
+  .navigation__mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    vertical-align: center;
+    border-bottom:1px solid #ccc;
+  }
+  .navigation__mobile-logo {
+    font-size: 16px;
+    font-family: "Roboto Slab", sans-serif;
+    line-height: 24px;
+    vertical-align: middle;
   }
 }
