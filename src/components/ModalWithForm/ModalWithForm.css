@@ -136,11 +136,18 @@
   margin-top: 4px;
   display: block;
 }
-@media screen and (max-width:768px) { 
-  .modal{ 
-    top:100px; 
+@media screen and (max-width: 550px) {
+  .modal {
+    top: 100px;
   }
-  .modal__content{ 
-    height:100%; 
+  .modal__content {
+    height: 100%;
+  }
+  .modal__close {
+    right: 20px;
+  }
+  .modal__button {
+    padding: 20px 79px;
+    width: 100%;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, useNavigate} from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 
 import LoginModal from "../LoginModal/LoginModal";
@@ -85,52 +85,52 @@ const App = () => {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-        <div className="page">
-          <div className="page__section">
-            <div className="page__content">
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Main
-                      isLoggedIn={isLoggedIn}
-                      handleLogout={handleLogout}
-                      handleSigninClick={handleSigninClick}
-                    />
-                  }
-                />
-                <Route
-                  path="/saved-news"
-                  element={
-                    <SaveArticles
-                      handleCloseClick={handleCloseClick}
-                      isLoggedIn={isLoggedIn}
-                      handleLogout={handleLogout}
-                    />
-                  }
-                />
-              </Routes>
-              <RegisterModal
-                isOpen={activeModal === "signup"}
-                handleCloseClick={handleCloseClick}
-                handleSigninClick={handleSigninClick}
-                handleSuccessRegistration={handleSuccessRegistration}
+      <div className="page">
+        <div className="page__section">
+          <div className="page__content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    isLoggedIn={isLoggedIn}
+                    handleLogout={handleLogout}
+                    handleSigninClick={handleSigninClick}
+                  />
+                }
               />
-              <LoginModal
-                isOpen={activeModal === "signin"}
-                handleCloseClick={closeActiveModal}
-                handleSignupClick={handleSignupClick}
-                handleLogin={handleLogin}
+              <Route
+                path="/saved-news"
+                element={
+                  <SaveArticles
+                    handleCloseClick={handleCloseClick}
+                    isLoggedIn={isLoggedIn}
+                    handleLogout={handleLogout}
+                  />
+                }
               />
-              <SuccessRegisterModal
-                isOpen={activeModal === "success"}
-                handleSigninlCick={handleSigninClick}
-                handleCloseClick={handleCloseClick}
-              />
-              <Footer />
-            </div>
+            </Routes>
+            <RegisterModal
+              isOpen={activeModal === "signup"}
+              handleCloseClick={handleCloseClick}
+              handleSigninClick={handleSigninClick}
+              handleSuccessRegistration={handleSuccessRegistration}
+            />
+            <LoginModal
+              isOpen={activeModal === "signin"}
+              handleCloseClick={closeActiveModal}
+              handleSignupClick={handleSignupClick}
+              handleLogin={handleLogin}
+            />
+            <SuccessRegisterModal
+              isOpen={activeModal === "success"}
+              handleSigninlCick={handleSigninClick}
+              handleCloseClick={handleCloseClick}
+            />
+            <Footer />
           </div>
         </div>
+      </div>
     </CurrentUserContext.Provider>
   );
 };
