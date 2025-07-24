@@ -35,7 +35,7 @@ const NewsCard = ({ article }) => {
             alt="bookmark"
           />
           {isHovered && (
-            <span className="news-card__hover-message">Sign in to save</span>
+            <span className="news-card__hover-message">Sign in to save articles</span>
           )}
         </button>
         {isSaveArticles && (
