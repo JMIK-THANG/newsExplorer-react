@@ -6,7 +6,7 @@ import Logout from "../../assets/logout.svg";
 import logoutDark from "../../assets/logout-dark.png";
 import closeBtn from "../../assets/close.svg";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, NavLink } from "react-router-dom";
 
 const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,11 +30,6 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
         </p>
       </Link>
 
-      {isLoggedIn && (
-        <div className={`${isSaveArticles ? "user__name-text-dark" : ""}`}>
-          {currentUser.name}
-        </div>
-      )}
       <button
         type="button"
         className="navigation__mobile"
@@ -56,6 +51,16 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
         </div>
         {!isLoggedIn && (
           <div className="navigation__menu">
+            {/* <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "navigation__link_active" : "navigation__link"
+              }
+              onClick={handleMenuToggle}
+            >
+              Home
+            </NavLink> */}
+
             <Link
               to="/"
               onClick={handleMenuToggle}
