@@ -38,9 +38,8 @@
   font-size: 14px;
   margin-left: 6px;
 }
-.horizontal {
-  margin: 0;
-  background: rgba(209, 210, 214, 1);
+.saved-news-header { 
+  border-bottom:1px solid #D1D2D6; 
 }
 .news-card-container {
   display: grid;

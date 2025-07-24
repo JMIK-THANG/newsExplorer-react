@@ -10,9 +10,11 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
 
   return (
     <>
-      <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-<hr className="horizontal"/>
-      <div className="saved-articles">
+      <header className="saved-news-header">
+        <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+      </header>
+      {/* <hr className="horizontal" /> */}
+      <main className="saved-articles">
         <h2 className="saved-articles__heading">Saved articles</h2>
 
         <h1 className="saved-articles__header">
@@ -25,13 +27,14 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
           <span className="keyword-chip">Yellowstone</span>
           <span className="keyword-chip">and 2 other</span>
         </p>
-
-        <div className="news-card-container">
-          {news.map((item, i) => (
-            <NewsCard key={i} article={item}/>
-          ))}
-        </div>
-      </div>
+        <section className="saved-articles__cards">
+          <div className="news-card-container">
+            {news.map((item, i) => (
+              <NewsCard key={i} article={item} />
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 };

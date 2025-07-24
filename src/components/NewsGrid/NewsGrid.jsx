@@ -1,6 +1,6 @@
 import React from "react";
 import "./NewsGrid.css";
-import NewsCard from "../NewsCard/NewsCard"
+import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 
 const NewsGrid = ({ searchResults, onShowMore, isLoading, moreArticles }) => {
@@ -9,7 +9,9 @@ const NewsGrid = ({ searchResults, onShowMore, isLoading, moreArticles }) => {
       <h2 className="news-grid__title">Search Results</h2>
       <div className="news-grid__container">
         {searchResults.map((article) => (
-          <NewsCard key={article.url} article={article} />
+          <li key={article.url} className="news-grid__item">
+            <NewsCard article={article} />
+          </li>
         ))}
 
         {isLoading && (

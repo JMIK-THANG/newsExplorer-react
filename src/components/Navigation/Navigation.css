@@ -14,6 +14,13 @@
 .navigation__close {
   display: none;
 }
+.navigation__logo-link {
+  text-decoration: none;
+  /* color: inherit; */
+}
+.saved-news-header {
+  border-bottom: 1px solid red;
+}
 .navigation__logo {
   width: 200px;
   height: 24px;
@@ -24,6 +31,7 @@
   vertical-align: middle;
   margin: 0;
   color: white;
+  list-style: none;
 }
 .navigation__logo_dark {
   color: #000;
@@ -102,8 +110,18 @@
 .navigation-logged__button_dark {
   color: #000;
 }
-.mobile__navigation-header {
+.navigation__mobile-header {
   display: none;
+}
+@media screen and (max-width: 909px) {
+  .navigation-logged__button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .navigation-logged__link {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 @media screen and (max-width: 768px) {
   .navigation {
@@ -116,6 +134,7 @@
     align-items: baseline;
     height: 30px;
   }
+
   .navigation__link-home::after {
     display: none;
   }
@@ -138,7 +157,7 @@
     top: 0;
     right: -100%;
     width: 100%;
-    height: 230px;
+    height: 270px;
     background-color: rgba(26, 27, 34, 1);
     color: white;
     padding: 20px 20px;
@@ -162,18 +181,21 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
+    padding: 0;
   }
   .navigation__mobile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     vertical-align: center;
-    border-bottom:1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 16px;
   }
   .navigation__mobile-logo {
     font-size: 16px;
     font-family: "Roboto Slab", sans-serif;
     line-height: 24px;
     vertical-align: middle;
+    margin: 0;
   }
 }

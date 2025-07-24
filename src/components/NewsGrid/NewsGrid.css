@@ -35,7 +35,10 @@
   border-radius: 80px;
   margin-top: 56px;
 }
-
+.news-grid__item {
+  list-style: none;
+  text-decoration: none;
+}
 @media screen and (max-width: 1024px) {
   .news-grid {
     padding: 80px 9px;

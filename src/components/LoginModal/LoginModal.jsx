@@ -65,6 +65,7 @@ const LoginModal = ({
           id="login-modal-email"
           className={`modal__input ${errors.email ? "modal__input_error" : ""}`}
           placeholder="Enter your email"
+          required
           value={data.email}
           onChange={handleChange}
         />
@@ -81,6 +82,7 @@ const LoginModal = ({
             errors.password ? "modal__input_error" : ""
           }`}
           placeholder="Enter your password"
+          required
           value={data.password}
           onChange={handleChange}
         />

@@ -11,7 +11,7 @@ const NewsCard = ({ article }) => {
   const location = useLocation();
   const isSaveArticles = location.pathname === "/saved-news";
   return (
-    <div className="news-card">
+    <article className="news-card">
       <img
         src={article.urlToImage}
         alt={article.title}
@@ -60,7 +60,7 @@ const NewsCard = ({ article }) => {
           </>
         )}
       </div>
-    </div>
+    </article>
   );
 };
 

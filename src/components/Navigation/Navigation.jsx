@@ -20,13 +20,15 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
   };
   return (
     <div className="navigation">
-      <h1
-        className={`navigation__logo ${
-          isSaveArticles ? "navigation__logo_dark" : ""
-        }`}
-      >
-        NewsExplorer
-      </h1>
+      <Link to="/" className="navigation__logo-link">
+        <p
+          className={`navigation__logo ${
+            isSaveArticles ? "navigation__logo_dark" : ""
+          }`}
+        >
+          NewsExplorer
+        </p>
+      </Link>
 
       {isLoggedIn && (
         <div className={`${isSaveArticles ? "user__name-text-dark" : ""}`}>

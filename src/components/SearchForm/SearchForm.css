@@ -12,7 +12,6 @@
   line-height: 64px;
   padding-top: 80px;
   margin: 0 auto 32px;
-  margin-right:10px; 
 }
 .search-form__description {
   font-weight: 400;
@@ -92,14 +91,14 @@
   }
   .search-form__heading {
     max-width: 288px;
-    font-size: 38px;
+    font-size: 36px;
     line-height: 40px;
     padding: 30px 19px 0 16px;
     margin: 0 0 16px;
   }
   .search-form__description {
     max-width: 288px;
-    margin: 0 0 122px;
+    margin: 0 0 120px;
   }
   .search-form__form {
     flex-direction: column;

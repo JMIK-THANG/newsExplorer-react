@@ -86,7 +86,7 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <div className="page__section">
+        <main className="page__section">
           <div className="page__content">
             <Routes>
               <Route
@@ -129,7 +129,7 @@ const App = () => {
             />
             <Footer />
           </div>
-        </div>
+        </main>
       </div>
     </CurrentUserContext.Provider>
   );

@@ -15,7 +15,11 @@ const Footer = () => {
             </a>
           </li>
           <li className="footer__social-item">
-            <a href="https://tripleten.com" className="footer__link">
+            <a
+              href="https://tripleten.com"
+              className="footer__link"
+              target="_blank"
+            >
               TripleTen
             </a>
           </li>

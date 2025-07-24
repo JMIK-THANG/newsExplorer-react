@@ -41,6 +41,7 @@ const RegisterModal = ({
           id="register-modal-email"
           className="modal__input"
           placeholder="Email"
+          required
           value={data.email}
           onChange={handleChange}
         />
@@ -53,6 +54,7 @@ const RegisterModal = ({
           id="register-modal-password"
           className="modal__input"
           placeholder="Enter password"
+          required
           value={data.password}
           onChange={handleChange}
         />
