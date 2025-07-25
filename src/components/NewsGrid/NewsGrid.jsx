@@ -22,7 +22,7 @@ const NewsGrid = ({ searchResults, onShowMore, isLoading, moreArticles }) => {
       </div>
       {moreArticles && !isLoading && (
         <div className="show-more-container">
-          <button className="news-grid__show-more" onClick={onShowMore}>
+          <button onClick={onShowMore} className="news-grid__show-more">
             Show More
           </button>
         </div>

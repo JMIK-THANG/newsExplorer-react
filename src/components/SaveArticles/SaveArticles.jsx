@@ -13,7 +13,6 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
       <header className="saved-news-header">
         <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       </header>
-      {/* <hr className="horizontal" /> */}
       <main className="saved-articles">
         <h2 className="saved-articles__heading">Saved articles</h2>
 

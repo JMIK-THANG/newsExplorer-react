@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./Main.css"
+import "./Main.css";
+
 import Header from "../Header/Header";
 import Preloader from "../Preloader/Preloader";
 import NewsGrid from "../NewsGrid/NewsGrid";
@@ -7,7 +8,7 @@ import About from "../About/About";
 import notfoundImg from "../../assets/notfound.svg";
 import { fetchNews } from "../../utils/api";
 
-const Main = ({ isLoggedIn, handleLogout, handleSigninClick}) => {
+const Main = ({ isLoggedIn, handleLogout, handleSigninClick }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,9 +18,11 @@ const Main = ({ isLoggedIn, handleLogout, handleSigninClick}) => {
 
   const handleSearch = async (query) => {
     if (!query.trim()) return;
+
     setSearchQuery(query);
     setIsLoading(true);
     setCurrentPage(1);
+
     try {
       const { articles, totalResults } = await fetchNews(query, 3, 1);
       setSearchResults(articles);
@@ -52,30 +55,49 @@ const Main = ({ isLoggedIn, handleLogout, handleSigninClick}) => {
   const moreArticles = searchResults.length < totalResults;
 
   return (
-    <div>
-      <Header
-        isLoggedIn={isLoggedIn}
-        onSearch={handleSearch}
-        handleLogout={handleLogout}
-        handleSigninClick={handleSigninClick}
-      />
-      {isLoading && <Preloader />}
-      {!isLoading && searchResults.length > 0 && (
-        <NewsGrid
-          searchResults={searchResults}
-          onShowMore={handleShowMore}
-          moreArticles={moreArticles}
+    <>
+      <header>
+        <Header
+          isLoggedIn={isLoggedIn}
+          onSearch={handleSearch}
+          handleLogout={handleLogout}
+          handleSigninClick={handleSigninClick}
         />
-      )}
-      {!isLoading && searchResults.length === 0 && searchQuery && (
-        <div className="no-results">
-          <img src={notfoundImg} alt="not found image" />
-          <h1>Nothing found</h1>
-          <p>Sorry but nothing matched your search item "{searchQuery}"</p>
-        </div>
-      )}
-      <About />
-    </div>
+      </header>
+
+      <main>
+        <section className="main__search-results" aria-label="Search results">
+          {isLoading && <Preloader />}
+
+          {!isLoading && searchResults.length > 0 && (
+            <NewsGrid
+              searchResults={searchResults}
+              onShowMore={handleShowMore}
+              isLoading={isLoading}
+              moreArticles={moreArticles}
+            />
+          )}
+
+          {!isLoading && searchResults.length === 0 && searchQuery && (
+            <div className="no-results">
+              <img src={notfoundImg} alt="Not found" />
+              <h1>Nothing found</h1>
+              <p>Sorry, nothing matched your search for "{searchQuery}".</p>
+            </div>
+          )}
+
+          {error && (
+            <div className="error-message">
+              <p>{error}</p>
+            </div>
+          )}
+        </section>
+
+        <section className="main__about">
+          <About />
+        </section>
+      </main>
+    </>
   );
 };
 

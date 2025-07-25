@@ -51,25 +51,16 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
         </div>
         {!isLoggedIn && (
           <div className="navigation__menu">
-            {/* <NavLink
+            <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "navigation__link_active" : "navigation__link"
+                `navigation-logged__link navigation-logged__link-home ${
+                  isActive ? "navigation__link_active" : ""
+                }`
               }
-              onClick={handleMenuToggle}
             >
               Home
-            </NavLink> */}
-
-            <Link
-              to="/"
-              onClick={handleMenuToggle}
-              className={`navigation__link navigation__link-home ${
-                isHome ? "navigation__link" : ""
-              }`}
-            >
-              Home
-            </Link>
+            </NavLink>
 
             <button
               onClick={() => {
@@ -90,7 +81,7 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
                 to="/"
                 className={`navigation-logged__link navigation-logged__link-home ${
                   isHome
-                    ? "navigation__link-home"
+                    ? "navigation__link-active"
                     : "navigation-logged__link_dark"
                 }`}
               >
@@ -100,7 +91,9 @@ const Navigation = ({ handleSigninClick, isLoggedIn, handleLogout }) => {
               <Link
                 to="/saved-news"
                 className={`navigation-logged__link navigation-logged__article-save ${
-                  isSaveArticles ? "navigation-logged__link_dark" : ""
+                  isSaveArticles
+                    ? "navigation-logged__link_dark navigation__link-active_black"
+                    : ""
                 }`}
               >
                 Saved Articles

@@ -16,7 +16,6 @@
 }
 .navigation__logo-link {
   text-decoration: none;
-  /* color: inherit; */
 }
 .saved-news-header {
   border-bottom: 1px solid red;
@@ -51,19 +50,34 @@
   color: #fff;
 }
 
-.navigation__link-home {
+.navigation__link-active {
   position: relative;
   margin: 0;
 }
 
-.navigation__link-home::after {
+.navigation__link-active::after {
   position: absolute;
   content: "";
   top: 48px;
   left: 0;
   height: 2px;
-  width: 120%;
+  width: 100%;
   background-color: #fff;
+  margin: 0;
+}
+.navigation__link-active_black {
+  position: relative;
+  margin: 0;
+}
+
+.navigation__link-active_black::after {
+  position: absolute;
+  content: "";
+  top: 48px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #000;
   margin: 0;
 }
 .navigation__link-signin {
@@ -117,12 +131,14 @@
   .navigation-logged__button {
     font-size: 16px;
     line-height: 24px;
+    width: 100%;
   }
   .navigation-logged__link {
     font-size: 16px;
     line-height: 24px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .navigation {
     padding: 16px;
@@ -135,11 +151,13 @@
     height: 30px;
   }
 
-  .navigation__link-home::after {
+  .navigation__link-active::after,
+  .navigation__link-active_black::after {
     display: none;
   }
   .navigation__link-signin {
     width: 288px;
+    height: 56px;
     padding: 16px 110px;
   }
   .navigation__mobile {
@@ -149,9 +167,20 @@
   }
   .navigation-logged__menu {
     flex-direction: column;
+    align-items: flex-start;
     gap: 30px;
   }
-  /* Navigation for moble popup */
+  .navigation-logged__link {
+    color: #fff;
+  }
+  .navigation-logged__button {
+    color: #fff;
+    width: 140px;
+    height: 36px;
+  }
+  .navigation-logged__button img {
+    filter: brightness(0) invert(1);
+  }
   .navigation__overlay {
     position: fixed;
     top: 0;
@@ -186,7 +215,7 @@
   .navigation__mobile-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: centflaer;
     vertical-align: center;
     border-bottom: 1px solid #ccc;
     padding-bottom: 16px;

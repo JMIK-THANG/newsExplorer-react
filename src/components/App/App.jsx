@@ -11,7 +11,6 @@ import Footer from "../Footer/Footer";
 import SaveArticles from "../SaveArticles/SaveArticles";
 import Main from "../Main/Main";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
-import { CurrentLocationContext } from "../Contexts/CurrentLocationContexts";
 
 const App = () => {
   const navigate = useNavigate();
@@ -86,50 +85,52 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <main className="page__section">
-          <div className="page__content">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Main
-                    isLoggedIn={isLoggedIn}
-                    handleLogout={handleLogout}
-                    handleSigninClick={handleSigninClick}
-                  />
-                }
-              />
-              <Route
-                path="/saved-news"
-                element={
-                  <SaveArticles
-                    handleCloseClick={handleCloseClick}
-                    isLoggedIn={isLoggedIn}
-                    handleLogout={handleLogout}
-                  />
-                }
-              />
-            </Routes>
-            <RegisterModal
-              isOpen={activeModal === "signup"}
-              handleCloseClick={handleCloseClick}
-              handleSigninClick={handleSigninClick}
-              handleSuccessRegistration={handleSuccessRegistration}
+        <main className="page__main">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  isLoggedIn={isLoggedIn}
+                  handleLogout={handleLogout}
+                  handleSigninClick={handleSigninClick}
+                />
+              }
             />
-            <LoginModal
-              isOpen={activeModal === "signin"}
-              handleCloseClick={closeActiveModal}
-              handleSignupClick={handleSignupClick}
-              handleLogin={handleLogin}
+            <Route
+              path="/saved-news"
+              element={
+                <SaveArticles
+                  handleCloseClick={handleCloseClick}
+                  isLoggedIn={isLoggedIn}
+                  handleLogout={handleLogout}
+                />
+              }
             />
-            <SuccessRegisterModal
-              isOpen={activeModal === "success"}
-              handleSigninlCick={handleSigninClick}
-              handleCloseClick={handleCloseClick}
-            />
-            <Footer />
-          </div>
+          </Routes>
         </main>
+
+        <section>
+          <RegisterModal
+            isOpen={activeModal === "signup"}
+            handleCloseClick={handleCloseClick}
+            handleSigninClick={handleSigninClick}
+            handleSuccessRegistration={handleSuccessRegistration}
+          />
+          <LoginModal
+            isOpen={activeModal === "signin"}
+            handleCloseClick={closeActiveModal}
+            handleSignupClick={handleSignupClick}
+            handleLogin={handleLogin}
+          />
+          <SuccessRegisterModal
+            isOpen={activeModal === "success"}
+            handleSigninClick={handleSigninClick}
+            handleCloseClick={handleCloseClick}
+          />
+        </section>
+
+        <Footer />
       </div>
     </CurrentUserContext.Provider>
   );

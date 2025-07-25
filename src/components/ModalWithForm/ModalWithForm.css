@@ -67,6 +67,12 @@
   outline: none;
   margin-bottom: 31px;
 }
+.modal__input:focus {
+  border: 2px solid #1d4ed8;
+  outline: none;
+  background-color: #f0f8ff;
+}
+
 .modal__input:last-child {
   margin-bottom: 39px;
 }

@@ -105,12 +105,13 @@
   position: absolute;
   top: 0px;
   right: 50px;
+  padding:11px 20px; 
   font-size: 12px;
   font-family: "Roboto", Georgia, serif;
   font-weight: 500;
   border-radius: 16px;
   vertical-align: center;
-  width: 150px;
+  width: 182px;
   background: rgba(255, 255, 255, 1);
   transition: opacity 0.6s ease;
   z-index: 10;
