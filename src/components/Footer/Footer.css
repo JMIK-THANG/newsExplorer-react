@@ -15,6 +15,7 @@
 }
 
 .footer__copyright {
+  font-family: "Roboto", sans-serif;
   color: #b6bcbf;
   font-size: 16px;
   line-height: 22px;
@@ -31,26 +32,25 @@
 }
 
 @media screen and (max-width: 768px) {
-  .footer { 
-    padding:24px 40px 18px; 
+  .footer {
+    padding: 24px 40px 18px;
   }
 }
-@media screen and (max-width:700px){ 
-  .footer{ 
+@media screen and (max-width: 700px) {
+  .footer {
     flex-direction: column-reverse;
-    padding:20px 16px; 
+    padding: 20px 16px;
   }
-  .footer__social-container{ 
+  .footer__social-container {
     justify-content: space-between;
-    margin-bottom:38px; 
+    margin-bottom: 38px;
   }
-  .footer__social_type_nav{ 
+  .footer__social_type_nav {
     flex-direction: column;
-    padding:0; 
-    
+    padding: 0;
   }
-  .footer__copyright{ 
+  .footer__copyright {
     /* padding:0 16px 22px;  */
-    font-size:16px; 
+    font-size: 16px;
   }
 }

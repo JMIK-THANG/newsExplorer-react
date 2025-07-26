@@ -14,6 +14,7 @@
   margin: 0 auto 32px;
 }
 .search-form__description {
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -24,6 +25,7 @@
   display: flex;
 }
 .search-form__input {
+  font-family: "Roboto", sans-serif;
   flex: 1;
   height: 64px;
   border: none;
@@ -51,6 +53,7 @@
   border: none;
   background: #2f71e5;
   transition: all 0.3s ease-in-out;
+  font-family: "Roboto", sans-serif;
 }
 .search-form__button:hover {
   background: #347eff;
