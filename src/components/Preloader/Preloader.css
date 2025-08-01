@@ -1,0 +1,32 @@
+.news-preloader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  width: 100%;
+  grid-column: 1 / -1; /* Span all columns in grid */
+}
+
+.news-preloader__spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(31, 128, 224, 0.2);
+  border-top-color: #1f80e0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+.news-preloader__text {
+  color: #555;
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

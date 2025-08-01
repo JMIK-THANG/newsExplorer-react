@@ -1,3 +1,4 @@
+
 # 📰 News Explorer
 
 **News Explorer** is a responsive React application that allows users to search for news articles using the News API and save them to their profile. The app supports user registration and login, protected routes, and integrates with a custom backend for managing users and saved articles.
