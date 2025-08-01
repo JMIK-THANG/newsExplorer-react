@@ -9,7 +9,7 @@
 
 👉 [Live App (GitHub Pages)](https://jmik-thang.github.io/newsExplorer-react/)  
 👉 [Frontend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-react)  
-👉 [Backend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-express)
+👉 [Backend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-backend)
 
 ---
 
