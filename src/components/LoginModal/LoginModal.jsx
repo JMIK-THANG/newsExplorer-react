@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const LoginModal = ({
   isOpen,
   handleCloseClick,
-  handleLogin,
+  handleSignin,
   handleSignupClick,
 }) => {
   const [data, setData] = useState({
@@ -44,7 +44,7 @@ const LoginModal = ({
     if (validate()) {
       setIsSubmitting(true);
       try {
-        await handleLogin(data);
+        await handleSignin(data);
       } finally {
         setIsSubmitting(false);
       }

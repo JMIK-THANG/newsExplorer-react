@@ -75,6 +75,8 @@ const Main = ({ isLoggedIn, handleLogout, handleSigninClick }) => {
               onShowMore={handleShowMore}
               isLoading={isLoading}
               moreArticles={moreArticles}
+              isLoggedIn={isLoggedIn}
+              searchQuery={searchQuery}
             />
           )}
 
