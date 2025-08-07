@@ -49,7 +49,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
           <div className="news-card-container">
             {userArticles.map((article, i) => (
               <NewsCard
-                key={article.id}
+                key={article._id}
                 article={article}
                 isLoggedIn={isLoggedIn}
                 onDeleteSuccess={handleDeleteSuccess}
