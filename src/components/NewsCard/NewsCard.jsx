@@ -37,7 +37,6 @@ const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess }) => {
       });
   };
   const handleDeleteArticle = () => {
-    debugger;
     const token = getToken();
     console.log("Delete article ID:", article._id)
     deleteArticle(article._id, token)
