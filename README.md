@@ -1,51 +1,53 @@
+
 # 📰 News Explorer
 
-**News Explorer** is a responsive React application that allows users to search for current news articles via the News API and save articles to their profile. It features authentication, protected routes, and integration with a custom backend to manage users and saved articles.
+**News Explorer** is a responsive React application that allows users to search for news articles using the News API and save them to their profile. The app supports user registration and login, protected routes, and integrates with a custom backend for managing users and saved articles.
+
+---
+
+## 🔗 Live Demo
+
+👉 [Live App (GitHub Pages)](https://jmik-thang.github.io/newsExplorer_react/)  
+👉 [Frontend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-react)  
+👉 [Backend GitHub Repo](https://github.com/JMIK-THANG/final_project_express)
 
 ---
 
 ## 📌 Features
 
-### 🔍 Keyword Search
-- Users can search for news articles using a keyword.
-- The app fetches news from the past 7 days using the News API.
-
-### 💾 Save Articles
-- Authenticated users can save articles to their personal profile.
-
-### 🧾 View Saved Articles
-- Users can view and manage their saved articles on a protected route.
-
-### 🔐 Authentication
-- Includes user registration, login, JWT token handling, and protected routes.
-
-### 🎨 Figma-based Design
-- The user interface closely follows a provided Figma layout for consistency and usability.
+- 🔍 **Search by Keyword** — Fetches recent news articles from the past 7 days via News API
+- 💾 **Save Articles** — Authenticated users can save articles to their account
+- 🧾 **View & Manage Saved Articles** — Accessible via protected route `/saved-news`
+- 🔐 **Authentication** — Includes registration, login, JWT handling, and route protection
+- 🎨 **Figma-Based UI** — Matches a provided design spec using BEM CSS methodology
 
 ---
 
 ## 🛠 Tech Stack
 
-### Frontend
+### ✨ Frontend
 - React
-- JSX
-- CSS (BEM Methodology)
 - React Router
-- HTML Form Validation (custom and native)
+- JSX
+- CSS (BEM)
+- HTML Form Validation (custom + native)
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
+### 🔗 Backend
+- Node.js + Express
+- MongoDB + Mongoose
 - JWT Authentication
+- API validation with Celebrate / Joi
 
-### External API
-- [News API](https://newsapi.org/)
+### 🌍 External API
+- [NewsAPI.org](https://newsapi.org/)
 
-# Final Project React
+---
 
-## 🚀 Live Demo
-[https://jmik-thang.github.io/final_project_react/](https://jmik-thang.github.io/final_project_react/)
+## ⚙️ Connecting to Backend
 
-## 📄 Description
-This is a React-based project deployed with GitHub Pages.
+This project communicates with a custom backend to manage user accounts and saved articles.
+
+To connect the frontend to the backend, create a `.env` file in the root:
+
+```env
+REACT_APP_API_URL=http://localhost:3005
