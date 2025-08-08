@@ -3,14 +3,14 @@ import "./NewsGrid.css";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 
-const NewsGrid = ({ searchResults, onShowMore, isLoading, moreArticles }) => {
+const NewsGrid = ({ searchQuery, searchResults, onShowMore, isLoading,isLoggedIn, moreArticles }) => {
   return (
     <section className="news-grid">
       <h2 className="news-grid__title">Search Results</h2>
       <div className="news-grid__container">
         {searchResults.map((article) => (
           <li key={article.url} className="news-grid__item">
-            <NewsCard article={article} />
+            <NewsCard article={article} isLoggedIn={isLoggedIn} searchQuery={searchQuery} />
           </li>
         ))}
 

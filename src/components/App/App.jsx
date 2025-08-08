@@ -5,7 +5,8 @@ import "./App.css";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessRegisterModal from "../SucessRegisterModal/SuccessRegisterModal";
-import { authorize, checkToken } from "../../utils/Auth";
+import { signin, signup, deleteArticle, checkToken } from "../../utils/api";
+import { setToken, getToken, removeToken } from "../../utils/token";
 
 import Footer from "../Footer/Footer";
 import SaveArticles from "../SaveArticles/SaveArticles";
@@ -17,23 +18,66 @@ const App = () => {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-
-  const handleLogin = ({ email, password }) => {
-    authorize(email, password).then((data) => {
-      checkToken(data.token).then((data) => {
-        setCurrentUser(data.data);
-        setIsLoggedIn(true);
-        handleCloseClick();
-      });
-    });
-  };
+  const [error, setError] = useState(null);
+  const[isLoading, setIsLoading] = useState(false); 
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
     navigate("/");
   };
-
+  const onSignup = (data) => {
+    setIsLoading(true);
+    return signup(data)
+      .then((currentUser) => {
+        return signin({email:data.email,password:data.password}).then((data) => {
+          return checkToken(data.token).then((user) => {
+            setCurrentUser(user);
+            closeActiveModal();
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => setIsLoading(false));
+  };
+  const handleSignup = ({ name, email, password, confirmPassword }) => {
+    console.log(email, password)
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+    signup({name, password, email})
+      .then(() => {
+        closeActiveModal();
+      })
+      .catch((err) => setError(err.message || "Registration failed"));
+  };
+  const handleSignin = ({ email, password }) => {
+    if (!email || !password) {
+      setError("email and password are required.");
+      return;
+    }
+    signin({email, password}).then((data) => {
+      if (data.token) {
+        setToken(data.token);
+        checkToken(data.token)
+          .then((data) => {
+            setIsLoggedIn(true);
+            setCurrentUser(data);
+            closeActiveModal();
+            // const redirectPath = location.state?.from?.pathname || "/";
+            // navigate(redirectPath);
+          })
+          .catch((err) => {
+            console.error("Error fectching user info:", err);
+            setIsLoggedIn(false);
+            setError("Session expired.  Please log in again.");
+          });
+      }
+    });
+  };
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -116,17 +160,20 @@ const App = () => {
             handleCloseClick={handleCloseClick}
             handleSigninClick={handleSigninClick}
             handleSuccessRegistration={handleSuccessRegistration}
+            handleSignup={handleSignup}
+            onSignup={onSignup}
           />
           <LoginModal
             isOpen={activeModal === "signin"}
             handleCloseClick={closeActiveModal}
             handleSignupClick={handleSignupClick}
-            handleLogin={handleLogin}
+            handleSignin={handleSignin}
           />
           <SuccessRegisterModal
             isOpen={activeModal === "success"}
             handleSigninClick={handleSigninClick}
             handleCloseClick={handleCloseClick}
+            handleSignup={handleSignup}
           />
         </section>
 

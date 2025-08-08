@@ -5,13 +5,13 @@ const RegisterModal = ({
   isOpen,
   handleCloseClick,
   handleSigninClick,
-  handleRegistration,
+  onSignup,
   handleSuccessRegistration,
 }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
-    username: "",
+    name: "",
   });
 
   const handleChange = (e) => {
@@ -23,8 +23,8 @@ const RegisterModal = ({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(data)
-    // handleSuccessRegistration();
+    onSignup(data);
+    handleSuccessRegistration();
   };
   return (
     <ModalWithForm
@@ -63,14 +63,20 @@ const RegisterModal = ({
         Enter your username
         <input
           type="text"
-          name="username"
+          name="name"
           className="modal__input"
           id="register-modal-username"
           placeholder="Enter your username"
-          value={data.username}
+          value={data.name}
           onChange={handleChange}
         />
       </label>
+      {/* {errors.general && (
+        <span className="modal__error modal__error_general">
+          {errors.general}
+        </span>
+      )} */}
+
       <div className="modal__button-container">
         <button
           type="submit"

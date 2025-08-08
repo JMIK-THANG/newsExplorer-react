@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const LoginModal = ({
   isOpen,
   handleCloseClick,
-  handleLogin,
+  handleSignin,
   handleSignupClick,
 }) => {
   const [data, setData] = useState({
@@ -35,19 +35,32 @@ const LoginModal = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
+    setData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
       setIsSubmitting(true);
-      try {
-        await handleLogin(data);
-      } finally {
-        setIsSubmitting(false);
-      }
+      handleSignin(data)
+        .then(() => {
+          handleCloseClick();
+        })
+        .catch((err) => {
+          console.error("Login failed:", err);
+          setErrors({ general: "Incorrect email or password" });
+        })
+
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     }
   };
   return (
@@ -93,9 +106,13 @@ const LoginModal = ({
 
       <div className="modal__button-container">
         <button
-          className="modal__button modal__button_type_primary"
+          className={`modal__button modal__button_type_primary ${
+            data.email.trim() && data.password.trim()
+              ? "modal__button_type_logged"
+              : ""
+          }`}
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !data.email.trim() || !data.password.trim()}
         >
           {isSubmitting ? "Signing in..." : "Sign in"}
         </button>
