@@ -41,9 +41,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
 
         <p className="saved-articles__keywords">
           By keywords:
-          <span className="keyword-chip">Nature</span>
-          <span className="keyword-chip">Yellowstone</span>
-          <span className="keyword-chip">and 2 other</span>
+          <span className="keyword-chip">fjalsdf{userArticles.title}</span>
         </p>
         <section className="saved-articles__cards">
           <div className="news-card-container">
