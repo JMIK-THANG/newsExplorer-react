@@ -40,9 +40,12 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
         </h1>
 
         <p className="saved-articles__keywords">
-          By keywords:
-          <span className="keyword-chip">fjalsdf{userArticles.title}</span>
-        </p>
+        By keywords:
+          {userArticles.map((article,i) => { 
+            return <span className="keyword-chip">{article.keyword}</span> 
+
+          })}
+                  </p>
         <section className="saved-articles__cards">
           <div className="news-card-container">
             {userArticles.map((article, i) => (

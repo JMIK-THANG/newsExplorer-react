@@ -20,7 +20,7 @@ const ModalWithForm = ({
         >
           <img src={closebutton} alt="modal close button" />
         </button>
-        <form onSubmit={onSubmit}className="modal__form">{children}</form>
+        <form onSubmit={onSubmit} className="modal__form" noValidate>{children}</form>
       </div>
     </div>
   );

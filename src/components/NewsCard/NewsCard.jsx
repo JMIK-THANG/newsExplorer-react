@@ -5,16 +5,23 @@ import deleteButtonDefault from "../../assets/delete-normal.png";
 import deleteButtonHover from "../../assets/delete-hover.svg";
 import bookmarknormal from "../../assets/bookmarknormal.svg";
 import bookmarkhover from "../../assets/bookmarkhover.svg";
+import bookmarkGreen from "../../assets/bookmark-green.png"
 import { getToken } from "../../utils/token";
 import { saveArticle, deleteArticle } from "../../utils/api";
 
-const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess }) => {
+const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess, handleSignin}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [isBusy, setIsBusy] = useState(false)
   const location = useLocation();
   const isSaveArticles = location.pathname === "/saved-news";
 
   const handleSavedArticle = () => {
+    if(!isLoggedIn){ 
+      handleSignin?.();
+      return; 
+    }
+    if(isSaved || isBusy) return;
     const token = getToken();
     const articleData = {
       keyword: searchQuery,
@@ -25,16 +32,17 @@ const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess }) => {
       link: article.url,
       image: article.urlToImage,
     };
-    console.log("Sending article:", articleData);
-
+    setIsBusy(true); 
     saveArticle(articleData, token)
       .then((articleData) => {
-        console.log("saved articla:", articleData);
         setIsSaved(true);
       })
       .catch((err) => {
         console.error("Failed to save article", err);
-      });
+      })
+      .finally(() => { 
+        setIsBusy(false)
+      })
   };
   const handleDeleteArticle = () => {
     const token = getToken();
@@ -69,10 +77,11 @@ const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess }) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={handleSavedArticle}
+          disabled = {isBusy || isSaved}           
         >
           <img
             className="news-card__bookmark"
-            src={isHovered ? bookmarkhover : bookmarknormal}
+            src={isSaved ? bookmarkGreen : isHovered ? bookmarkhover : bookmarknormal}
             alt="bookmark"
           />
           {isHovered && (
