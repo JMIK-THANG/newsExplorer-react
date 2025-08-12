@@ -73,7 +73,6 @@
   border: none;
 }
 .news-card__bookmark-container:disabled {
-  /* opacity: 0.6; */
   cursor: not-allowed;
 }
 

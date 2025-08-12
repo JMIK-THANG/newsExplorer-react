@@ -9,7 +9,7 @@ import bookmarkGreen from "../../assets/bookmark-green.png"
 import { getToken } from "../../utils/token";
 import { saveArticle, deleteArticle } from "../../utils/api";
 
-const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess, handleSignin}) => {
+const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess, handleSigninClick}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isBusy, setIsBusy] = useState(false)
@@ -18,7 +18,7 @@ const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess, handleSig
 
   const handleSavedArticle = () => {
     if(!isLoggedIn){ 
-      handleSignin?.();
+      handleSigninClick?.();
       return; 
     }
     if(isSaved || isBusy) return;
@@ -109,7 +109,7 @@ const NewsCard = ({ article, isLoggedIn, searchQuery, onDeleteSuccess, handleSig
               {isHovered && isLoggedIn && (
                 <span className="news-card__hover-message">
                   {isLoggedIn
-                ? "Remove saved artilce"
+                ? "Remove saved article"
                 : "Sign in to delete articles"}
                 </span>
               )}
