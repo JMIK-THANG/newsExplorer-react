@@ -27,7 +27,6 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
     setUserArticles((prev) => prev.filter((article) => article._id !== id));
   };
 
-  // === keyword summary logic ===
   const keywordSummary = useMemo(() => {
     const counts = userArticles.reduce((acc, article) => {
       const k = (article.keyword || "").trim();
