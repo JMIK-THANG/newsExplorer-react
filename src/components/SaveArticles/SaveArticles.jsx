@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 import NewsCard from "../NewsCard/NewsCard";
 import Navigation from "../Navigation/Navigation";
@@ -26,29 +26,75 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
   const handleDeleteSuccess = (id) => {
     setUserArticles((prev) => prev.filter((article) => article._id !== id));
   };
+
+  // === keyword summary logic ===
+  const keywordSummary = useMemo(() => {
+    const counts = userArticles.reduce((acc, article) => {
+      const k = (article.keyword || "").trim();
+      if (!k) return acc;
+      acc[k] = (acc[k] || 0) + 1;
+      return acc;
+    }, {});
+
+    const uniqueKeywords = Object.keys(counts);
+    uniqueKeywords.sort(
+      (a, b) => counts[b] - counts[a] || a.localeCompare(b)
+    );
+
+    const topTwo = uniqueKeywords.slice(0, 2);
+    const othersCount = uniqueKeywords.length - topTwo.length;
+
+    return { topTwo, othersCount };
+  }, [userArticles]);
+
   return (
     <>
       <header className="saved-news-header">
-        <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <div className="saved-news-header_nav">
+          <Navigation isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        </div>
+
+        <div className="saved-news-header_hero">
+          <h2 className="saved-articles__heading">Saved articles</h2>
+
+          <h1 className="saved-articles__header">
+            {currentUser?.name || "User"}, you have {userArticles.length} saved articles
+          </h1>
+
+          <p className="saved-articles__keywords">
+            By keywords:{" "}
+            {keywordSummary.topTwo.length > 0 && (
+              <>
+                <strong className="saved-articles__keyword">
+                  {keywordSummary.topTwo[0]}
+                </strong>
+                {keywordSummary.topTwo[1] && (
+                  <>
+                    {", "}
+                    <strong className="saved-articles__keyword">
+                      {keywordSummary.topTwo[1]}
+                    </strong>
+                  </>
+                )}
+                {keywordSummary.othersCount > 0 && (
+                  <>
+                    {" "}and{" "}
+                    <strong className="saved-articles__keyword">
+                      {keywordSummary.othersCount} other
+                      {keywordSummary.othersCount > 1 ? "s" : ""}
+                    </strong>
+                  </>
+                )}
+              </>
+            )}
+          </p>
+        </div>
       </header>
+
       <main className="saved-articles">
-        <h2 className="saved-articles__heading">Saved articles</h2>
-
-        <h1 className="saved-articles__header">
-          {currentUser?.name || "User"}, you have {userArticles.length} saved
-          articles
-        </h1>
-
-        <p className="saved-articles__keywords">
-        By keywords:
-          {userArticles.map((article,i) => { 
-            return <span className="keyword-chip">{article.keyword}</span> 
-
-          })}
-                  </p>
         <section className="saved-articles__cards">
           <div className="news-card-container">
-            {userArticles.map((article, i) => (
+            {userArticles.map((article) => (
               <NewsCard
                 key={article._id}
                 article={article}

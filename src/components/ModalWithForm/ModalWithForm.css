@@ -135,6 +135,7 @@
 /* Modal Error */
 .modal__input_error {
   border: 1px solid red;
+  margin:0; 
 }
 
 .modal__error {
@@ -142,6 +143,7 @@
   color: red;
   margin-top: 4px;
   display: block;
+  margin-bottom:31px; 
 }
 
 @media screen and (max-width: 550px) {
