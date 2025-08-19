@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./Main.css";
-
 import Header from "../Header/Header";
 import Preloader from "../Preloader/Preloader";
 import NewsGrid from "../NewsGrid/NewsGrid";
