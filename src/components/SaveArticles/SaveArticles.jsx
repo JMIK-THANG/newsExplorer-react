@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useMemo } from "react";
+import{ useContext, useState, useEffect, useMemo } from "react";
 import { CurrentUserContext } from "../Contexts/CurrentUserContexts";
 import NewsCard from "../NewsCard/NewsCard";
 import Navigation from "../Navigation/Navigation";

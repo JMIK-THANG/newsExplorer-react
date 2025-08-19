@@ -1,4 +1,3 @@
-import React from "react";
 import "./NewsGrid.css";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";

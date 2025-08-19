@@ -1,4 +1,3 @@
-import React from "react";
 import "./ModalWithForm.css";
 import closebutton from "../../assets/closebutton.svg";
 

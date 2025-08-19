@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessRegisterModal from "../SucessRegisterModal/SuccessRegisterModal";
-import { signin, signup, deleteArticle, checkToken } from "../../utils/api";
-import { setToken, getToken, removeToken } from "../../utils/token";
+import { signin, signup, checkToken } from "../../utils/api";
+import { setToken, } from "../../utils/token";
 
 import Footer from "../Footer/Footer";
 import SaveArticles from "../SaveArticles/SaveArticles";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./SearchForm.css";
 
 const SearchForm = ({ onSearch }) => {
@@ -11,7 +11,7 @@ const SearchForm = ({ onSearch }) => {
       onSearch(searchItem.trim());
     }
   };
-  const handleSearch = (e) => {
+  const handleSearch = () => {
     if (searchItem.trim() === "") {
       setSearchError(false);
     } else {
