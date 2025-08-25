@@ -21,7 +21,7 @@ const SaveArticles = ({ isLoggedIn, handleLogout }) => {
         console.error("Failed to fetch saved articles: ", err);
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, []); 
 
   const handleDeleteSuccess = (id) => {
     setUserArticles((prev) => prev.filter((article) => article._id !== id));
