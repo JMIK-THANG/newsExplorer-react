@@ -7,7 +7,7 @@
 
 ## 🔗 Live Demo
 
-👉 [Live App (GitHub Pages)](https://newsexplorer-react.onrender.com/)  
+👉 [Live App](https://newsexplorer-react.onrender.com/)  
 👉 [Frontend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-react)  
 👉 [Backend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-backend)
 
