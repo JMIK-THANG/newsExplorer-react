@@ -1,9 +1,4 @@
-/* .news-card {
-  position: relative;
-  background: #fff;
-  border-radius: 16px;
-  padding-bottom: 24px;
-} */
+
 .news-card {
   position: relative;
   display: flex;
@@ -77,6 +72,10 @@
   background: transparent;
   border: none;
 }
+.news-card__bookmark-container:disabled {
+  cursor: not-allowed;
+}
+
 .news-card__keyword {
   position: absolute;
   top: 10px;
@@ -116,6 +115,7 @@
   transition: opacity 0.6s ease;
   z-index: 10;
 }
+
 @media screen and (max-width: 768px) {
   .news-card__image {
     height: 150px;

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./Navigation.css";
 import menu from "../../assets/menu.svg";
 import darkMenuIcon from "../../assets/menu-dark.svg";

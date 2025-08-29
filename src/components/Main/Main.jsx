@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Main.css";
-
 import Header from "../Header/Header";
 import Preloader from "../Preloader/Preloader";
 import NewsGrid from "../NewsGrid/NewsGrid";
@@ -77,6 +76,7 @@ const Main = ({ isLoggedIn, handleLogout, handleSigninClick }) => {
               moreArticles={moreArticles}
               isLoggedIn={isLoggedIn}
               searchQuery={searchQuery}
+              handleSigninClick={handleSigninClick}
             />
           )}
 

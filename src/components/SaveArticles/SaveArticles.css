@@ -1,7 +1,14 @@
+
 .saved-articles {
   padding: 40px 104px;
   background-color: #f5f5f5;
   color: #333;
+}
+.saved-news-header_nav{ 
+  border-bottom: 1px solid #d1d2d6;
+}
+.saved-news-header_hero{ 
+  padding:0px 104px; 
 }
 
 .saved-articles__heading {
@@ -10,7 +17,6 @@
   font-size: 18px;
   line-height: 24px;
   color: #1a1b2280;
-  margin: 0 0 28px;
 }
 
 .saved-articles__header {
@@ -29,17 +35,16 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
-  color: #666;
+  color: #1A1B22;
   margin: 0 0 56px;
 }
 
 .keyword-chip {
-  display: inline-block;
-  background: #e0e0e0;
-  border-radius: 16px;
-  padding: 4px 12px;
-  font-size: 14px;
-  margin-left: 6px;
+  font-family:"Roboto", sans-serif; 
+  font-size:18px; 
+  font-weight:700; 
+  line-height:24px; 
+  color: #1A1B22; 
 }
 .saved-news-header {
   border-bottom: 1px solid #d1d2d6;

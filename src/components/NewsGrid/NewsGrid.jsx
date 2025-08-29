@@ -1,16 +1,15 @@
-import React from "react";
 import "./NewsGrid.css";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 
-const NewsGrid = ({ searchQuery, searchResults, onShowMore, isLoading,isLoggedIn, moreArticles }) => {
+const NewsGrid = ({ searchQuery, searchResults, onShowMore, isLoading,isLoggedIn, moreArticles, handleSigninClick }) => {
   return (
     <section className="news-grid">
       <h2 className="news-grid__title">Search Results</h2>
       <div className="news-grid__container">
         {searchResults.map((article) => (
           <li key={article.url} className="news-grid__item">
-            <NewsCard article={article} isLoggedIn={isLoggedIn} searchQuery={searchQuery} />
+            <NewsCard article={article} isLoggedIn={isLoggedIn} searchQuery={searchQuery} handleSigninClick={handleSigninClick} />
           </li>
         ))}
 

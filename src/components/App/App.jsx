@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SuccessRegisterModal from "../SucessRegisterModal/SuccessRegisterModal";
-import { signin, signup, deleteArticle, checkToken } from "../../utils/api";
-import { setToken, getToken, removeToken } from "../../utils/token";
+import { signin, signup, checkToken } from "../../utils/api";
+import { setToken, } from "../../utils/token";
 
 import Footer from "../Footer/Footer";
 import SaveArticles from "../SaveArticles/SaveArticles";
@@ -19,7 +19,7 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState(null);
-  const[isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -30,12 +30,14 @@ const App = () => {
     setIsLoading(true);
     return signup(data)
       .then((currentUser) => {
-        return signin({email:data.email,password:data.password}).then((data) => {
-          return checkToken(data.token).then((user) => {
-            setCurrentUser(user);
-            closeActiveModal();
-          });
-        });
+        return signin({ email: data.email, password: data.password }).then(
+          (data) => {
+            return checkToken(data.token).then((user) => {
+              setCurrentUser(user);
+              closeActiveModal();
+            });
+          }
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -43,12 +45,12 @@ const App = () => {
       .finally(() => setIsLoading(false));
   };
   const handleSignup = ({ name, email, password, confirmPassword }) => {
-    console.log(email, password)
+    console.log(email, password);
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
-    signup({name, password, email})
+    signup({ name, password, email })
       .then(() => {
         closeActiveModal();
       })
@@ -59,7 +61,7 @@ const App = () => {
       setError("email and password are required.");
       return;
     }
-    signin({email, password}).then((data) => {
+    return signin({ email, password }).then((data) => {
       if (data.token) {
         setToken(data.token);
         checkToken(data.token)
@@ -67,8 +69,6 @@ const App = () => {
             setIsLoggedIn(true);
             setCurrentUser(data);
             closeActiveModal();
-            // const redirectPath = location.state?.from?.pathname || "/";
-            // navigate(redirectPath);
           })
           .catch((err) => {
             console.error("Error fectching user info:", err);

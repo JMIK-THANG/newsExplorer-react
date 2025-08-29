@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({
@@ -71,12 +71,6 @@ const RegisterModal = ({
           onChange={handleChange}
         />
       </label>
-      {/* {errors.general && (
-        <span className="modal__error modal__error_general">
-          {errors.general}
-        </span>
-      )} */}
-
       <div className="modal__button-container">
         <button
           type="submit"

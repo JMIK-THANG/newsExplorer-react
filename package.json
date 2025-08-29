@@ -1,14 +1,13 @@
 {
   "name": "newsExplorer-react",
-  "homepage": "https://jmik-thang.github.io/newsExplorer-react/",
+  "homepage": "https://jmik-news-explorer.crabdance.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-    "predeploy":"npm run build", 
-    "deploy":"gh-pages -d dist", 
+    "deploy":"npm run build && scp -r ./dist/* jmikthang5@wtwrjmik.crabdance.com:/home/jmikthang5/final-frontend",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
