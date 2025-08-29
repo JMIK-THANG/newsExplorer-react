@@ -7,9 +7,9 @@
 
 ## 🔗 Live Demo
 
-👉 [Live App (GitHub Pages)](https://jmik-thang.github.io/newsExplorer_react/)  
+👉 [Live App](https://newsexplorer-react.onrender.com/)  
 👉 [Frontend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-react)  
-👉 [Backend GitHub Repo](https://github.com/JMIK-THANG/final_project_express)
+👉 [Backend GitHub Repo](https://github.com/JMIK-THANG/newsExplorer-backend)
 
 ---
 
