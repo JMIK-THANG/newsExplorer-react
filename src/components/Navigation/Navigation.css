@@ -215,7 +215,7 @@
   .navigation__mobile-header {
     display: flex;
     justify-content: space-between;
-    align-items: centflaer;
+    align-items: center;
     vertical-align: center;
     border-bottom: 1px solid #ccc;
     padding-bottom: 16px;
