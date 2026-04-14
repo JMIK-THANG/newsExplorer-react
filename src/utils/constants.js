@@ -5,5 +5,5 @@ const NEWS_API_URL = "https://newsapi.org/v2/everything";
 
 const baseUrl = import.meta.env.PROD ?  "https://newsexplorer-backend-8enw.onrender.com" : "http://localhost:3005"
 
-export{NEWS_API_KEY,NEWS_API_URL,baseUrl}
+export{NEWS_API_KEY,NEWS_API_URL,baseUrl};
 

@@ -101,6 +101,9 @@ const App = () => {
   const handleCloseClick = () => {
     setActiveModal("");
   };
+   const handleCloseClicktest = () => {
+    setActiveModal("");
+  };
 
   useEffect(() => {
     if (!activeModal) return;
